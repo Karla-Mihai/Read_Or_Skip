@@ -128,6 +128,24 @@ def edit_review(request, review_id):
 
     return render(request, 'ROS_App/edit_review.html', {'form': form, 'review': review})
 
+def book_review(request, review_id):
+    book = get_object_or_404(Book, id=review_id)  # Fetch the book being reviewed
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user  # Assign the logged-in user to the review
+            review.book = book  # Assign the book being reviewed
+            review.save()
+            return redirect('book_detail', book_id=review.book.id)  # Redirect to the book detail page
+    else:
+        form = ReviewForm()
+
+    # Fetch all reviews for the book
+    reviews = Review.objects.filter(book=book).order_by('-created_at')
+    return render(request, 'ROS_App/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
+
+
 def aboutUs_view(request):
     return render(request, 'ROS_App/about_us.html') 
 

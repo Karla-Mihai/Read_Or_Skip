@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="book-review-page">
+        <h2>Reviews for {{ book.title }}</h2>
+
+        <!-- Review Submission Form (visible to everyone) -->
+        <div class="review-form">
+            <h3>Submit a Review</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit-button">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Display Existing Reviews -->
+        <div class="reviews-list">
+            <h3>Recent Reviews</h3>
+            {% for review in reviews %}
+                <div class="review">
+                    <p><strong>Rating:</strong> {{ review.get_rating_display }}</p>  <!-- Display rating as text -->
+                    <p><strong>Review:</strong> {{ review.review }}</p>
+                    {% if review.summary %}
+                        <p><strong>Summary:</strong> {{ review.summary }}</p>
+                    {% endif %}
+                    <p><strong>By:</strong> {{ review.user.username }} on {{ review.created_at }}</p>
+                    {% if review.user == request.user %}
+                        <a href="{% url 'edit_review' review.id %}">Edit</a> |
+                        <a href="{% url 'delete_review' review.id %}">Delete</a>
+                    {% endif %}
+                </div>
+                <hr>
+            {% empty %}
+                <p>No reviews yet. Be the first to submit one!</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
