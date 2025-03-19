@@ -1,0 +1,18 @@
+h1{
+    font-size: 40px;
+}
+
+a {
+    font-size: 20px;
+    text-decoration: none; /* Removes the underline */
+    color: black; /* A bright blue color for links */
+    padding: 10px 15px; /* Adds some space around the text */
+    border-radius: 5px; /* Rounds the corners */
+    background-color: #f4853b; /* Adds a subtle background color */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+a:hover {
+    background-color: #ff2a00; /* Fills the background with blue on hover */
+    color: white; /* Makes text white for contrast */
+}
