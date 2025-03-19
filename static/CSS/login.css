@@ -1,10 +1,16 @@
 body {
-    background-image: url('/static/images/login_background.jpg');
+    background-image: url('/static/images/log_in_background.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    
 }
-
 
 /* Additional styling for the form */
 form {
+    font-size: 20px;
+    color: wheat;
     width: 100%;
     max-width: 400px;
     background-color: rgba(50, 50, 50, 0.8); /* Semi-transparent background */
@@ -12,6 +18,16 @@ form {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     text-align: center;
+}
+
+h1{
+    color:black;
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+p{
+    font-size: 30px;
 }
 
 input {
@@ -25,8 +41,8 @@ input {
 button {
     width: 95%;
     padding: 12px;
-    background-color: #28a745;
-    color: white;
+    background-color: #eda16a;
+    color: black;
     border: none;
     font-weight: bold;
     border-radius: 5px;
@@ -34,18 +50,19 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #884c21;
 }
 
 .signup-button {
     display: inline-block;
-    padding: 12px 20px;
-    background-color: #007bff;
+    padding: 16px 24px;
+    font-size: 18px;
+    background-color: #ee3238;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .signup-button:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
 }

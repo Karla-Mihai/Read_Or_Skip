@@ -1,6 +1,6 @@
 body {
     font-family: 'Forum', sans-serif;
-    background-color: lightblue;
+    background-color: rgb(237, 220, 169);
     color: black;
     display: flex;
     flex-direction: column;
@@ -21,6 +21,9 @@ body .navbar {
     top: 0;
     left: 0;
     z-index: 1000;
+    min-height: 60px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 
@@ -34,6 +37,14 @@ body .navbar {
     justify-content: space-evenly;
     flex: 2;
     text-align: center;
+}
+
+
+.navbar .left, .navbar .right, .navbar .center {
+    display: flex;
+    align-items: center; /* Aligns all content to the vertical center */
+    margin: 0; /* Resets any unintended extra spacing */
+    padding: 0;
 }
 
 /* List styling */
@@ -70,4 +81,6 @@ body .navbar {
     border-radius: 20px;
     border: none;
     font-family: 'Forum', sans-serif;  
+    box-sizing: border-box;
+    margin-left: auto;
 }

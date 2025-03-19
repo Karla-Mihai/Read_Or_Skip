@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}?v=1.1">
 {% endblock %}
 
 {% block content %}
@@ -20,6 +20,6 @@
         <button type="submit" class="login-button">Login</button>
     </form>
 
-    <p>Not a user? <span>Register Now:</span></p>
+    <p><strong>Not a user? <span>Register Now:</span></strong></p>
     <a href="{% url 'register' %}" class="signup-button">Sign up</a>
 {% endblock %}
