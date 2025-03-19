@@ -9,10 +9,9 @@ body {
     min-height: 100%; 
 }
 
-/* Navbar styles */
-.navbar {
+body .navbar {
     font-family: 'Forum', sans-serif !important; 
-    background: #03254c; 
+    background: #99805c !important; 
     width: 100%;
     padding: 10px 15px;
     display: flex;
@@ -24,7 +23,7 @@ body {
     z-index: 1000;
 }
 
-/* Left, center, right sections of the navbar */
+
 .navbar .left, .navbar .right {
     display: flex;
     justify-content: flex-start;
@@ -50,7 +49,7 @@ body {
 }
 
 .navbar li a {
-    background-color: #104a8e;
+    background-color: #4d402e !important;
     color: white;
     font-size: 20px;
     padding: 8px 16px;
@@ -61,7 +60,7 @@ body {
 }
 
 .navbar li a:hover {
-    background-color: #5fa3d1;
+    background-color: #332b1f !important;
 }
 
 /* Search input styling */
