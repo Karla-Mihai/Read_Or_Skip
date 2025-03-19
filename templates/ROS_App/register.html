@@ -4,6 +4,16 @@
 {% block content %}
     <div>
         <h2>Create Your Account</h2>
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <form method="post">
             {% csrf_token %}
             <div>

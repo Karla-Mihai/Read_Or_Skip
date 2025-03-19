@@ -8,6 +8,16 @@
     <h1>Log In</h1>
     <h2>Read or Skip</h2>
 
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
         

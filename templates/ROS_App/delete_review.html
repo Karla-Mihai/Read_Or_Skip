@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="delete-review-page">
+        <h1>Delete Review</h1>
+        <p>Are you sure you want to delete your review for <strong>{{ review.book.title }}</strong>?</p>
+        
+       
+        <div class="review-details">
+            <p><strong>Rating:</strong> {{ review.get_rating_display }}</p>
+            <p><strong>Review:</strong> {{ review.review }}</p>
+            {% if review.summary %}
+                <p><strong>Summary:</strong> {{ review.summary }}</p>
+            {% endif %}
+            <p><strong>Posted on:</strong> {{ review.created_at }}</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'book_detail' review.book.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
