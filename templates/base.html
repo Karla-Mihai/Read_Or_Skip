@@ -11,33 +11,34 @@
 </head>
 <body>
     <div class="navbar">
-        <!-- Left section: Home and Log In links -->
-        <div class="left">
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'login' %}">Log In</a></li>
-            </ul>
-        </div>
+        {% if user.is_authenticated %}
+            <!-- Left section: Home and Log In links -->
+            <div class="left">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                </ul>
+            </div>
     
-        <!-- Center section: FAQ, About, Contact Us links -->
-        <div class="center">
-            <ul>
-                <li><a href="{% url 'faq' %}">FAQ</a></li>
-                <li><a href="{% url 'aboutUs' %}">About</a></li>
-                <li><a href="{% url 'contactUs' %}">Contact Us</a></li>
-            </ul>
-        </div>
+            <!-- Center section: FAQ, About, Contact Us links -->
+            <div class="center">
+                <ul>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'aboutUs' %}">About</a></li>
+                    <li><a href="{% url 'contactUs' %}">Contact Us</a></li>
+                </ul>
+            </div>
 
-        <!-- Right section: Log Out, My Account links, and search input -->
-        <div class="right">
-            <ul>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
-                <li><a href="{% url 'myAccount' %}">My Account</a></li>
-            </ul>
-            <input type="text" placeholder="Search...">
-        </div>
+            <!-- Right section: Log Out, My Account links, and search input -->
+                <div class="right">
+                <ul>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'myAccount' %}">My Account</a></li>
+                </ul>
+                    <input type="text" placeholder="Search...">
+                </div>
+        {% endif %}
     </div>
-
     {% block content %}{% endblock %}
 </body>
 </html>
