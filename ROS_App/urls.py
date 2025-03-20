@@ -19,4 +19,5 @@ urlpatterns = [
     path('book/<int:review_id>/edit_review/', views.edit_review, name='edit_review'),
     path('book/<int:book_id>/delete_from_tbr/', views.delete_from_tbr, name='delete_from_tbr'),
     path('book/<int:review_id>/book_review/', views.book_review, name='book_review'),
+    path("update-account/", views.update_account_view, name="update_account"),
 ]

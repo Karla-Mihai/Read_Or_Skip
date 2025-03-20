@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>My account</h1>
+    <p>Welcome {{ user.username }}</p>
+    <a href="{% url 'update_account' %}">Update account details</a>
+{% endblock %}

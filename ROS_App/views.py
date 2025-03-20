@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404  # Ensure this is imported
 from .models import Book, Review, TBR
-from .forms import ReviewForm
+from .forms import ReviewForm, UpdateAccountForm
 from django.db import models 
 from django.contrib.auth.models import User  
 from django.contrib import messages  
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
 
 def home_view(request):
@@ -201,6 +202,31 @@ def contactUs_view(request):
 
 def myAccount_view(request):
     return render(request, 'ROS_App/my_account.html')
+
+@login_required
+def update_account_view(request):
+    if request.method == "POST":
+        form = UpdateAccountForm(request.POST, instance=request.user)
+        if form.is_valid():
+            # Update email and username
+            user = form.save()
+
+            # Update password if provided
+            old_password = form.cleaned_data.get("old_password")
+            new_password1 = form.cleaned_data.get("new_password1")
+            if old_password and new_password1:
+                user.set_password(new_password1)
+                user.save()
+                update_session_auth_hash(request, user)  # Keep the user logged in
+
+            messages.success(request, "Your account details have been updated successfully!")
+            return redirect("myAccount")  # Redirect to the account page
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = UpdateAccountForm(instance=request.user)
+    return render(request, "ROS_App/update_account.html", {"form": form})
+
 
 def logout_view(request):
     return render(request, 'ROS_App/logout.html')
