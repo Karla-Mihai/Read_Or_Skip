@@ -1,13 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)  # Ensure category names are unique
+
+    def __str__(self):
+        return self.name
+    
 # Model for Books
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     description = models.TextField()
     cover_image = models.ImageField(upload_to='books/covers/', default='images/dracula.jpg')
-    
+    categories = models.ManyToManyField(Category, related_name='books') 
+    popularity_score = models.FloatField(default=0) 
     def __str__(self):
         return self.title
 

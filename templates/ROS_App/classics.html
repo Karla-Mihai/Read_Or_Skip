@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Classics Books</h1>
+    <p>Explore our collection of classic books.</p>
+
+    <div class="books-grid">
+        {% for book in classics_books %}
+            <div class="book-card">
+                <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}">
+                <h3>{{ book.title }}</h3>
+                <p>by {{ book.author }}</p>
+                <p>Popularity: {{ book.popularity_score }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

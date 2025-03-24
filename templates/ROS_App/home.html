@@ -21,10 +21,12 @@
         <section class="categories">
             <h2>Categories</h2>
             <div class="categories-list">
-                {% for category in categories %}
-                    <div class="category-item">{{ category }}</div>
-                {% endfor %}
+                <ul>
+                    <li><a href="{% url 'fantasy' %}">Fantasy</a></li>
+                    <li><a href="{% url 'thriller' %}">Thriller</a></li>
+                    <li><a href="{% url 'romance' %}">Romance</a></li>
+                    <li><a href="{% url 'classics' %}">Classics</a></li>
+                </ul>
             </div>
         </section>
-    </div>
 {% endblock %}

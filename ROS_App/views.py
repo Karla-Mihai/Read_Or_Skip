@@ -6,8 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from .models import Category
 
-
+@login_required
 def home_view(request):
     trending_books = [
         {'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg', 'id': 1},
@@ -21,6 +22,11 @@ def home_view(request):
         'categories': categories,
     }
     return render(request, 'ROS_App/home.html', context)
+
+
+def categories_view(request):
+    categories = Category.objects.all()  
+    return render(request, 'ROS_App/categories.html', {'categories': categories})
 
 def book_detail(request, book_id):
     # Hardcoded books data
@@ -60,6 +66,7 @@ def book_detail(request, book_id):
 
     return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'form': form, 'average_rating': average_rating})
 
+@login_required
 def add_to_tbr(request, book_id):
     # Get the book object by its ID
     book = get_object_or_404(Book, id=book_id)
@@ -115,6 +122,7 @@ def delete_review(request, review_id):
 
     return redirect('book_detail', book_id=review.book.id)  
 
+@login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     
@@ -227,6 +235,29 @@ def update_account_view(request):
         form = UpdateAccountForm(instance=request.user)
     return render(request, "ROS_App/update_account.html", {"form": form})
 
+def fantasy_view(request):
+    fantasy_books = Book.objects.filter(
+        categories__name="Fantasy"
+    ).order_by('-popularity_score')
+    return render(request, 'ROS_App/fantasy.html', {'fantasy_books': fantasy_books})
+
+def thriller_view(request):
+    thriller_books = Book.objects.filter(
+        categories__name="Thriller"
+    ).order_by('-popularity_score')
+    return render(request, 'ROS_App/thriller.html', {'thriller_books': thriller_books})
+
+def romance_view(request):
+    romance_books = Book.objects.filter(
+        categories__name="Romance"
+    ).order_by('-popularity_score')
+    return render(request, 'ROS_App/romance.html', {'romance_books': romance_books})
+
+def classics_view(request):
+    classics_books = Book.objects.filter(
+        categories__name="Classics"
+    ).order_by('-popularity_score')
+    return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
 
 def logout_view(request):
     return render(request, 'ROS_App/logout.html')
