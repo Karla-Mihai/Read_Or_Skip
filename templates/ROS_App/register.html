@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/register.css' %}">
+{% endblock %}
 
 {% block content %}
     <div>
-        <h2>Create Your Account</h2>
+        <h1>Create Your Account:</h1>
         {% if messages %}
             <div>
                 {% for message in messages %}
@@ -36,7 +39,7 @@
         </form>
 
         <div>
-            <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
+            <p style="font-size:34px;">Already have an account? <a href="{% url 'login' %}" class="login-button">Login Here</a></p>
         </div>
     </div>
 {% endblock %}
