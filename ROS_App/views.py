@@ -47,10 +47,11 @@ def book_detail(request, book_id):
     # Check if there are reviews in the database
     reviews = Review.objects.filter(book__title=book['title'])
     average_rating = reviews.aggregate(models.Avg('rating'))['rating__avg'] if reviews.exists() else 0
+    return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'average_rating': average_rating})
 
     # Handle review submission
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST) 
         if form.is_valid():
             new_review = form.save(commit=False)
             new_review.user = request.user  # Attach the logged-in user to the review
