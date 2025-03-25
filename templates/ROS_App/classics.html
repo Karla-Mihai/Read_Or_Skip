@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/classics.css' %}">
+{% endblock %}
 {% block content %}
-    <h1>Classics Books</h1>
+    <h1>Classic Books</h1>
     <p>Explore our collection of classic books.</p>
 
     <div class="books-grid">
