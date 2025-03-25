@@ -4,7 +4,7 @@ from .forms import ReviewForm, UpdateAccountForm
 from django.db import models 
 from django.contrib.auth.models import User  
 from django.contrib import messages  
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
 from .models import Category
 from django.http import JsonResponse
@@ -210,6 +210,7 @@ def faq_view(request):
 def contactUs_view(request):
     return render(request, 'ROS_App/contact_us.html')
 
+@login_required
 def myAccount_view(request):
     return render(request, 'ROS_App/my_account.html')
 
@@ -262,6 +263,7 @@ def classics_view(request):
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
 
 def logout_view(request):
+    logout(request)
     return render(request, 'ROS_App/logout.html')
 
 def user_register(request):

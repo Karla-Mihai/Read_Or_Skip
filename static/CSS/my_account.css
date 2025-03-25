@@ -1,0 +1,47 @@
+.account-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ebd9d1ba;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.welcome-message {
+    font-size: 1.1rem;
+    color: #262424;
+    margin-bottom: 2rem;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.account-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #816f56;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.account-button:hover {
+    background-color: rgb(75, 54, 21);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.account-button i {
+    font-size: 1rem;
+}

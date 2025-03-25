@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/update_account.css' %}?v=1.1">
+{% endblock %}
 {% block content %}
-<h2>Update Account Details</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
-<a href="{% url 'myAccount' %}">Back to My acccount</a>
+<div class="update-account-container">
+    <h2 class="update-account-title">Update Account Details</h2>
+    <form method="post" class="update-account-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">Update</button>
+    </form>
+    <a href="{% url 'myAccount' %}" class="back-link">← Back to My Account</a>
+</div>
 {% endblock %}
