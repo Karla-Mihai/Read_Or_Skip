@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+
 {% load static %}
-{% load customFilters %}  <!-- Load the custom filter here -->
+
+{% load customFilters %}
 
 {% block content %}
 <div class="container mt-5">
@@ -21,7 +23,7 @@
     <!-- Add to TBR Button -->
     <button id="add-to-tbr-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Add to TBR</button>
 
-    <!-- Go to TBR List Button (moved to the top) -->
+    <!-- Go to TBR List Button -->
     <form method="GET" action="{% url 'tbr_list' %}">
         <button type="submit" class="btn btn-info mb-3">Go to TBR List</button> <!-- Button to go to TBR List -->
     </form>
