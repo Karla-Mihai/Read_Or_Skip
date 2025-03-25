@@ -18,19 +18,17 @@
         {% endfor %}
     </div>
 
-    <!-- Add to TBR Button (moved to the top) -->
+    <!-- Add to TBR Button -->
     <button id="add-to-tbr-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Add to TBR</button>
 
-    <!-- Go to TBR List Button -->
+    <!-- Go to TBR List Button (moved to the top) -->
     <form method="GET" action="{% url 'tbr_list' %}">
         <button type="submit" class="btn btn-info mb-3">Go to TBR List</button> <!-- Button to go to TBR List -->
     </form>
 
-    <!-- Write a Review -->
     <h4>Write a Review:</h4>
     <form method="POST" class="review-form">
         {% csrf_token %}
-        
         <!-- Review Section -->
         <div class="form-group">
             <label for="review">Review:</label>
@@ -61,7 +59,7 @@
             
             {% if review.summary %}
                 <h5>Summary:</h5>
-                <p>{{ review.summary }}</p>
+                <p>{{ review.summary }}</p>  <!-- Display the summary if it's provided -->
             {% endif %}
             
             <!-- Only allow the review owner to delete or edit their review -->
@@ -101,11 +99,10 @@
             if (data.success) {
                 alert('Book added to TBR list!');
             } else {
-                alert('Failed to add book to TBR list.');
+                alert(data.message);
             }
         })
         .catch(error => console.error('Error:', error));
     });
 </script>
-
 {% endblock %}
