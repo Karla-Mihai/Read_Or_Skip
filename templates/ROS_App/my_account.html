@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/my_account.css' %}?v=1.1">
+{% endblock %}
 
 {% block content %}
-    <h1>My account</h1>
-    <p>Welcome {{ user.username }}</p>
-    <a href="{% url 'update_account' %}">Update account details</a>
+<div class="account-container">
+    <h1>My Account</h1>
+    <p class="welcome-message">Welcome, {{ user.username }}!</p>
+    
+    <div class="account-actions">
+        <a href="{% url 'update_account' %}" class="account-button">
+            <i class="fas fa-user-edit"></i> Update Account
+        </a>
+        <a href="{% url 'tbr_list' %}" class="account-button">
+            <i class="fas fa-book"></i> Your TBR List
+        </a>
+    </div>
+</div>
 {% endblock %}

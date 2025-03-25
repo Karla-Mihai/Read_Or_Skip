@@ -4,9 +4,10 @@ from .forms import ReviewForm, UpdateAccountForm
 from django.db import models 
 from django.contrib.auth.models import User  
 from django.contrib import messages  
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
 from .models import Category
+from django.http import JsonResponse
 
 @login_required
 def home_view(request):
@@ -47,10 +48,11 @@ def book_detail(request, book_id):
     # Check if there are reviews in the database
     reviews = Review.objects.filter(book__title=book['title'])
     average_rating = reviews.aggregate(models.Avg('rating'))['rating__avg'] if reviews.exists() else 0
+    return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'average_rating': average_rating})
 
     # Handle review submission
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST) 
         if form.is_valid():
             new_review = form.save(commit=False)
             new_review.user = request.user  # Attach the logged-in user to the review
@@ -66,34 +68,34 @@ def book_detail(request, book_id):
 
     return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'form': form, 'average_rating': average_rating})
 
+def tbr_list(request):
+    if request.user.is_authenticated:
+        # Fetch all books in the user's TBR list
+        tbr_books = TBR.objects.filter(user=request.user)  # Fetch TBR entries for the logged-in user
+        books_in_tbr = [entry.book for entry in tbr_books]  # Get the actual Book instances from TBR
+
+        return render(request, 'ROS_App/tbr_list.html', {'books': books_in_tbr})  # Render the TBR list page
+    else:
+        return redirect('login') 
+
 @login_required
 def add_to_tbr(request, book_id):
-    # Get the book object by its ID
-    book = get_object_or_404(Book, id=book_id)
-    
-    # Check if the user is authenticated before adding the book to TBR
-    if request.user.is_authenticated:
-        # Check if the book is already in the user's TBR list
+    # Ensure the request is POST and the user is authenticated
+    if request.method == 'POST' and request.user.is_authenticated:
+        book = get_object_or_404(Book, id=book_id)
+
+        # Check if the book is already in the TBR list
         if not TBR.objects.filter(user=request.user, book=book).exists():
             # Add the book to the TBR list if it's not already there
             TBR.objects.create(user=request.user, book=book)
+            return JsonResponse({'success': True})  # Respond with success
         
-        # Redirect to the same book detail page after adding the book to TBR
-        return redirect('book_detail', book_id=book.id)
-    
-    # Redirect to the login page if the user is not logged in
-    return redirect('login')
+        # If the book is already in the TBR list, return failure
+        return JsonResponse({'success': False, 'message': 'This book is already in your TBR list.'})
 
-# TBR List view
-def tbr_list(request):
-    if request.user.is_authenticated:
-        # Fetch the user's TBR list from the TBR model
-        tbr_books = TBR.objects.filter(user=request.user)  # Get all TBR entries for the user
-        books_in_tbr = [tbr_entry.book for tbr_entry in tbr_books]  # Get the actual Book instances in TBR
+    # If the user is not authenticated, return failure
+    return JsonResponse({'success': False, 'message': 'You need to be logged in to add a book to TBR.'})
 
-        return render(request, 'ROS_App/tbr_list.html', {'books': books_in_tbr})
-    else:
-        return redirect('login')  # If the user is not logged in, redirect to login page
 
 def delete_from_tbr(request, book_id):
     # Get the book object by its ID
@@ -208,6 +210,7 @@ def faq_view(request):
 def contactUs_view(request):
     return render(request, 'ROS_App/contact_us.html')
 
+@login_required
 def myAccount_view(request):
     return render(request, 'ROS_App/my_account.html')
 
@@ -260,6 +263,7 @@ def classics_view(request):
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
 
 def logout_view(request):
+    logout(request)
     return render(request, 'ROS_App/logout.html')
 
 def user_register(request):

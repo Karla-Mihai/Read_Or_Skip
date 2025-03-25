@@ -19,8 +19,8 @@ class ReviewForm(forms.ModelForm):
         fields = ['review', 'summary', 'rating']
 
 class UpdateAccountForm(forms.ModelForm):
-    email = forms.EmailField(required=True, label="New Email")
-    username = forms.CharField(required=True, label="New Username")
+    email = forms.EmailField(required=True, label="Email")
+    username = forms.CharField(required=True, label="Username")
     old_password = forms.CharField(
         label="Old Password",
         widget=forms.PasswordInput(),
@@ -67,4 +67,7 @@ class UpdateAccountForm(forms.ModelForm):
                 raise ValidationError("The new passwords do not match.")
             if not self.instance.check_password(old_password):
                 raise ValidationError("Your old password is incorrect.")
+            
+        if not (old_password and new_password1 and new_password2):
+            raise ValidationError("If you do not wish to update any details, simply go back to my account")
         return cleaned_data

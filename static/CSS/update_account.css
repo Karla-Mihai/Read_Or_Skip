@@ -1,0 +1,82 @@
+/* update_account.css - Matching style to my_account.css */
+.update-account-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ebd9d1ba; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.update-account-title {
+    font-size: 1.8rem;
+    color: black;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.update-account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.update-account-form p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.update-account-form label {
+    font-weight: 500;
+    color: #4d402e;
+}
+
+.update-account-form input,
+.update-account-form select,
+.update-account-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #c4b5a7;
+    border-radius: 4px;
+    background: #f9f5f1;
+    transition: all 0.3s ease;
+}
+
+.update-account-form input:focus {
+    outline: none;
+    border-color: #4d402e;
+    box-shadow: 0 0 0 2px rgba(77, 64, 46, 0.2);
+}
+
+.submit-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #816f56; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-button:hover {
+    background-color: rgb(75, 54, 21); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #4d402e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: black;
+    text-decoration: underline;
+}

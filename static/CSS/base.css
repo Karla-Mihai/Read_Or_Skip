@@ -84,3 +84,20 @@ body .navbar {
     box-sizing: border-box;
     margin-left: auto;
 }
+.star-rating {
+    font-size: 2em;
+    color: #ccc; /* Light gray for empty stars */
+}
+
+.star-rating .filled {
+    color: #ffcc00; /* Yellow for filled stars */
+}
+
+.star-rating .star {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star-rating .star:hover {
+    color: #ffcc00; /* Highlight when hovered */
+}

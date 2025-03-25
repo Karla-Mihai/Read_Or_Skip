@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load customFilters %}
+
 {% block content %}
 <div class="container mt-5">
     <h1>{{ book.title }}</h1>
@@ -10,16 +12,18 @@
     <img src="{% static 'images/dracula.jpg' %}" alt="{{ book.title }}" class="book-cover">
     <p>{{ book.description }}</p>
 
-    <!-- Display the average rating as a number -->
-    <h4>Average Rating: {{ average_rating | floatformat:2 }}</h4>  <!-- Display average rating -->
+    <!-- Display the average rating as stars -->
+    <h4>Average Rating:</h4>
+    <div class="star-rating">
+        {% for i in average_rating|to %}
+            <span class="star {% if average_rating >= i %}filled{% endif %}">&#9733;</span>
+        {% endfor %}
+    </div>
 
-    <!-- Add to TBR Button (moved to the top) -->
-    <form method="POST" action="{% url 'add_to_tbr' book.id %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-secondary mb-3">Add to TBR</button>
-    </form>
+    <!-- Add to TBR Button -->
+    <button id="add-to-tbr-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Add to TBR</button>
 
-    <!-- Go to TBR List Button (moved to the top) -->
+    <!-- Go to TBR List Button -->
     <form method="GET" action="{% url 'tbr_list' %}">
         <button type="submit" class="btn btn-info mb-3">Go to TBR List</button> <!-- Button to go to TBR List -->
     </form>
@@ -27,7 +31,6 @@
     <h4>Write a Review:</h4>
     <form method="POST" class="review-form">
         {% csrf_token %}
-        
         <!-- Review Section -->
         <div class="form-group">
             <label for="review">Review:</label>
@@ -77,4 +80,31 @@
         <hr>
     {% endfor %}
 </div>
+
+<script>
+    // Function to add a book to the TBR list via AJAX
+    document.getElementById('add-to-tbr-btn').addEventListener('click', function() {
+        var bookId = this.getAttribute('data-book-id'); // Get the book ID
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value; // CSRF Token
+        
+        // Send AJAX request to add the book to TBR
+        fetch(`/book/${bookId}/add_to_tbr/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify({book_id: bookId}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Book added to TBR list!');
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 {% endblock %}
