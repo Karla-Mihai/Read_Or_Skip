@@ -1,0 +1,82 @@
+/* Ensure the body and container are styled appropriately */
+body 
+{
+    background-color: #0a1c60;
+    margin: 0;
+    padding: 0;
+}
+/* Apply a larger, white font to the h1 title */
+h1 {
+    font-size: 40px; 
+    padding:70px;   /* Make the font size bigger */
+    color: white;         /* Change the font color to white */
+    text-align: center;   /* Center the title */
+}
+
+/* Apply a larger, white font to the paragraph */
+p {
+    font-size: 30px;      /* Set the font size to 40px */
+    color: white;         /* Change the font color to white */
+    text-align: center;   /* Center the text */
+}
+
+/* Container for the books grid */
+.books-grid {
+    display: grid;                /* Use grid layout */
+    grid-template-columns: repeat(4, 1fr); /* Create 4 equal-width columns */
+    gap: 20px;                    /* Space between grid items */
+    padding: 20px;
+    justify-items: center;        /* Center the content within each grid cell */
+}
+
+/* Styling for each book card */
+.book-card {
+    background-color: #dbc3b0;
+    border-radius: 8px;
+    overflow: hidden;             /* Ensures image and text stay within card boundaries */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;                  /* Take full width of the grid cell */
+    max-width: 250px;             /* Ensure each card has a maximum width */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style for book image */
+.book-card img {
+    width: 100%;                  /* Make the image take full width of the card */
+    height: auto;                 /* Maintain aspect ratio */
+    border-bottom: 2px solid #ddd;  /* Add a border below the image */
+}
+
+/* Title styling */
+.book-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Author and popularity text styling */
+.book-card p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Responsive Design: Adjust grid for smaller screens (like mobile devices) */
+@media (max-width: 1024px) {
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets or medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .books-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile devices */
+    }
+}

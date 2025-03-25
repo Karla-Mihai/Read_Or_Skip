@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/fantasy.css' %}">
+{% endblock %}
 {% block content %}
     <h1>Fantasy Books</h1>
     <p>Explore our collection of fantasy books.</p>
