@@ -1,90 +1,81 @@
-/* Ensure the body and container are styled appropriately */
 body {
     background-color: #0a1c60;
     margin: 0;
     padding: 0;
 }
 
-/* Apply a larger, white font to the h1 title */
 h1 {
     font-size: 40px;
-    padding: 100px 0 20px 0;  /* Add more space on top */
-    color: white;              /* White text color */
-    text-align: center;        /* Center the title */
-    margin: 0;                 /* Remove default margin */
+    padding: 100px 0 20px 0;
+    color: white;
+    text-align: center;
+    margin: 0;
 }
 
-/* Apply a larger, white font to the paragraph */
 p {
-    font-size: 28px;           /* Adjust font size */
-    color: white;              /* White text color */
-    text-align: center;        /* Center the text */
-    margin-bottom: 50px;       /* Add space below paragraph */
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-/* Container for the books grid */
 .books-grid {
-    display: grid;                           /* Use grid layout */
-    grid-template-columns: repeat(4, 1fr);   /* Create 4 equal-width columns */
-    gap: 40px;                               /* Increase space between grid items */
-    padding: 0 20px 40px 20px;               /* Add padding around the grid */
-    justify-items: center;                   /* Center the content within each grid cell */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 0 20px 40px 20px;
+    justify-items: center;
 }
 
-/* Styling for each book card */
 .book-card {
     background-color: #dbc3b0;
-    border-radius: 30px;                      /* Rounded corners for cards */
-    overflow: hidden;                         /* Ensures image and text stay within card boundaries */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    width: 90%;                              /* Take full width of the grid cell */
-    max-width: 220px;                         /* Ensure each card has a slightly wider but not too wide max width */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 220px;
     text-align: center;
-    padding: 15px 10px;                       /* Reduced padding for a slightly smaller card */
-    height: auto;                             /* Adjust height to be dynamic */
-}
-
-/* Style for book image */
-.book-card img {
-    width: 100%;                  /* Make the image take full width of the card */
+    padding: 15px 10px;
     height: auto;
-    border-radius: 30px;                 /* Maintain aspect ratio */
-    border-bottom: 2px solid #ddd;  /* Border below the image */
 }
 
-/* Title styling */
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    border-bottom: 2px solid #ddd;
+}
+
 .book-card h3 {
-    font-size: 1.1rem;              /* Smaller title font size */
-    color: #333;                    /* Dark color for the title */
-    margin: 15px 0 5px 0;           /* Adjust margin for the title */
-    font-weight: bold;              /* Make the title bold */
+    font-size: 1.1rem;
+    color: #333;
+    margin: 15px 0 5px 0;
+    font-weight: bold;
 }
 
-/* Author and popularity text styling */
 .book-card p {
-    font-size: 0.95rem;             /* Slightly smaller text */
-    color: #666;                    /* Lighter text color */
-    margin: 5px 0;                  /* Margin between text */
+    font-size: 0.95rem;
+    color: #666;
+    margin: 5px 0;
 }
 
-/* Responsive Design: Adjust grid for smaller screens (like mobile devices) */
 @media (max-width: 1024px) {
     .books-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets or medium screens */
-        gap: 30px;                           /* Slightly reduced gap */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
     }
 }
 
 @media (max-width: 768px) {
     .books-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-        gap: 25px;                           /* Slightly reduced gap */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
 }
 
 @media (max-width: 480px) {
     .books-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile devices */
-        gap: 15px;                 /* Reduced gap for smaller screens */
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 }
