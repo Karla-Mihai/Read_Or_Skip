@@ -9,28 +9,27 @@
 {% block content %}
     <h1>Read It or Skip It</h1>
     <h2>Categories</h2>
-        <div class="categories-list">
-            <ul>
-                <li><a href="{% url 'fantasy' %}"></a></li>
-                <li><a href="{% url 'thriller' %}"></a></li>
-                <li><a href="{% url 'romance' %}"></a></li>
-                <li><a href="{% url 'classics' %}"></a></li>
-            </ul>
-        </div>
+    <div class="categories-list">
+        <ul>
+            <li><a href="{% url 'fantasy' %}"></a></li>
+            <li><a href="{% url 'thriller' %}"></a></li>
+            <li><a href="{% url 'romance' %}"></a></li>
+            <li><a href="{% url 'classics' %}"></a></li>
+        </ul>
+    </div>
 
-        <h2>Trending Books</h2>
-        <p style="font-size:20px;">Explore the latest trending books.</p>
+    <h2>Trending Books</h2>
+    <p style="font-size:20px;">Explore the latest trending books.</p>
 
-        <div class="books-grid">
-            {% for book in trending_books %}
-                <div class="book-card">
-                    <a href="{% url 'book_detail' book.id %}">
-                        <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}">
-                    </a>
-                    <h3><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></h3>
-                    <h3>{{ book.title }}</h3>
-                    <p>by {{ book.author }}</p>
-                </div>
-            {% endfor %}
-        </div>
+    <div class="books-grid">
+        {% for book in trending_books %}
+            <div class="book-card">
+                <a href="{% url 'book_detail' book.id %}">
+                    <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}">
+                    <h3>{{ book.title }}</h3>  <!-- Make sure the title is only in one place and is clickable -->
+                </a>
+                <p>by {{ book.author }}</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
