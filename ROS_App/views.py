@@ -13,6 +13,9 @@ import csv
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
+from django.http import Http404
+
+
 
 @login_required
 def home_view(request):
@@ -336,6 +339,7 @@ def load_books_from_csv():
                 'title': row['title'],
                 'author': row['author'],
                 'cover': row['cover'],
+                'description': row['description'],
             }
             category = row['category']
             if category in books:

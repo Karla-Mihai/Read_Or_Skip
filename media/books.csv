@@ -1,50 +1,50 @@
-id,title,author,cover,category
-49,The Midnight Library,Matt Haig,49Mid.jpg,Fantasy
-50,The Ballad of Songbirds and Snakes,Suzanne Collins,50balled.jpg,Fantasy
-51,A Game of Thrones,George R.R. Martin,51GOT2.jpg,Fantasy
-52,Harry Potter and the Sorcerer's Stone,J.K. Rowling,52HP1.jpg,Fantasy
-53,Harry Potter and the Chamber of Secrets,J.K. Rowling,53HP2.jpg,Fantasy
-54,Harry Potter and the Prisoner of Azkaban,J.K. Rowling,54HP3.jpg,Fantasy
-55,Harry Potter and the Goblet of Fire,J.K. Rowling,55HP4.jpg,Fantasy
-56,Harry Potter and the Order of the Phoenix,J.K. Rowling,56HP5.jpg,Fantasy
-57,Harry Potter and the Half-Blood Prince,J.K. Rowling,57HP6.jpg,Fantasy
-58,The Fellowship of the Ring,J.R.R. Tolkien,58LOTR1.jpg,Fantasy
-59,The Two Towers,J.R.R. Tolkien,59LOTR2.jpg,Fantasy
-60,The Return of the King,J.R.R. Tolkien,60LOTR3.jpg,Fantasy
-34,Famous Last Words,Gillian McAllister,34FLW.jpg,Thriller
-35,The Housemaid,Freida McFadden,35House1.jpg,Thriller
-36,The Housemaid's Secret,Freida McFadden,36House2.jpg,Thriller
-37,The Housemaid is Watching,Freida McFadden,37House3.jpg,Thriller
-38,The Silent Patient,Alex Michaelides,38Silent.jpg,Thriller
-39,Gone Girl,Gillian Flynn,39GoneGirl.jpg,Thriller
-40,The Da Vinci Code,Dan Brown,40DaVinci.jpg,Thriller
-41,The Girl With The Dragon Tattoo,Stieg Larsson,41Dragon.jpg,Thriller
-42,Angels & Demons,Dan Brown,42A&D.jpg,Thriller
-43,A Good Girl's Guide to Murder,Holly Jackson,43Guide.jpg,Thriller
-4,Twisted Lies,Ana Huang,4TwistedLies.jpg,Romance
-5,Twisted Hate,Ana Huang,5TwistedHate.jpg,Romance
-6,Twisted Games,Ana Huang,6TwistedGames.jpg,Romance
-7,Twisted Love,Ana Huang,7TwistedLove.jpg,Romance
-8,Yours Truly,Abby Jimenez,8YoursTruly.jpg,Romance
-9,Red, White & Royal Blue,Casey McQuinston,9RWRB.jpg,Romance
-10,The Hating Game,Sally Thorne,10HatingGame.jpg,Romance
-11,It Ends With Us,Colleen Hoover,11EndsUs.jpg,Romance
-12,It Starts With Us,Colleen Hoover,12StartsUs.jpg,Romance
-13,Ugly Love,Colleen Hoover,13UglyLove.jpg,Romance
-14,Wuthering Heights,Emily Bronte,14WutheringHeight.jpg,Romance
-15,Pride and Prejudice,Jane Austen,15Pride.jpg,Romance
-19,1984,George Orwell,19.1984.jpg,Classics
-20,The Hobbit,J.R.R. Tolkien,20Hobbit.jpg,Classics
-21,Romeo and Juliet,William Shakespeare,21Romeo.jpg,Classics
-22,Matilda,Roald Dahl,22Matilda.jpg,Classics
-23,The Shining,Stephen King,23Shining.jpg,Classics
-24,Holes,Louis Sachar,24Holes.jpg,Classics
-25,Life of Pi,Yann Martel,25Pi.jpg,Classics
-26,Gone With the Wind,Margaret Mitchell,26Wind.jpg,Classics
-27,The Lorax,Dr. Seuss,27TheLorax.jpg,Classics
-28,War and Peace,Leo Tolstoy,28War.jpg,Classics
-61,Crime and Punishment,Feodor Dostoievski,61CrimePunishment.jpg,Classics
-62,The Metamorphosis,The Metamorphosis,62Kafka.jpg,Classics
-63,A Court Of Thorne and Roses,Sarah J Maas,63ACOTAR.jpg,Romance
-64,Murder on the Orient Express,Agatha Christe,64Orient.jpg,Thriller
-65,Five Survive,Holly Jackson,65FiveSurvive.jpg,Thriller
+id,title,author,cover,category,description
+49,The Midnight Library,Matt Haig,49Mid.jpg,Fantasy,"Nora Seed finds herself in a magical library where she can explore the infinite possibilities of her life. Each book represents a different life she could have lived if she had made different choices. The novel explores themes of regret, self-acceptance, and the meaning of life."
+50,The Ballad of Songbirds and Snakes,Suzanne Collins,50balled.jpg,Fantasy,"This prequel to *The Hunger Games* follows Coriolanus Snow, a young man trying to climb the political ladder in a post-apocalyptic world. As a mentor in the 10th Hunger Games, Snow faces a moral dilemma that sets the stage for his future villainy. The book delves into themes of power, corruption, and survival."
+51,A Game of Thrones,George R.R. Martin,51GOT2.jpg,Fantasy,"In the Seven Kingdoms of Westeros, noble families battle for control of the Iron Throne. Political intrigue, betrayal, and the threat of supernatural forces make this epic fantasy both thrilling and unpredictable. The series explores power dynamics, loyalty, and the cost of ambition."
+52,Harry Potter and the Sorcerer's Stone,J.K. Rowling,52HP1.jpg,Fantasy,"Harry Potter discovers he is a wizard and enters Hogwarts School of Witchcraft and Wizardry, where he learns about his parents' mysterious death and a dark force threatening the wizarding world. Alongside new friends, Harry must confront the truth about his past and his destiny. This book sets the stage for an epic journey of friendship and magic."
+53,Harry Potter and the Chamber of Secrets,J.K. Rowling,53HP2.jpg,Fantasy,"In Harry's second year at Hogwarts, students are mysteriously petrified by an unseen creature. Harry, Ron, and Hermione must uncover the secrets of the Chamber of Secrets before it's too late. The novel explores themes of identity, bravery, and friendship while expanding the magical world."
+54,Harry Potter and the Prisoner of Azkaban,J.K. Rowling,54HP3.jpg,Fantasy,"Harry's third year at Hogwarts takes a dark turn when he learns that a dangerous prisoner, Sirius Black, has escaped from Azkaban. As he seeks the truth about his family, Harry confronts past traumas and discovers surprising secrets. The book explores themes of loyalty, revenge, and self-discovery."
+55,Harry Potter and the Goblet of Fire,J.K. Rowling,55HP4.jpg,Fantasy,"Harry unexpectedly becomes a competitor in the dangerous Triwizard Tournament, where he faces life-threatening challenges. As the dark forces of Voldemort gather strength, Harry must confront his fears and fight for survival. This book delves into themes of courage, rivalry, and the cost of war."
+56,Harry Potter and the Order of the Phoenix,J.K. Rowling,56HP5.jpg,Fantasy,"As Voldemort returns, Harry and his friends form Dumbledore's Army to oppose the Ministry's denial of the dark forces. The fight against oppression intensifies, both in the wizarding world and within Harry's own heart. This novel focuses on resistance, growing up, and the importance of friendship."
+57,Harry Potter and the Half-Blood Prince,J.K. Rowling,57HP6.jpg,Fantasy,"Harry uncovers crucial secrets about Voldemort's past through the help of a mysterious textbook. As war looms closer, Harry and his allies must prepare for the final battle. This book touches on themes of sacrifice, trust, and the hidden dangers of the past."
+58,The Fellowship of the Ring,J.R.R. Tolkien,58LOTR1.jpg,Fantasy,"Frodo Baggins sets out on an epic journey to destroy the One Ring, aided by a fellowship of diverse companions. The quest takes them through treacherous lands and challenges their loyalty and courage. The novel explores themes of friendship, destiny, and the fight between good and evil."
+59,The Two Towers,J.R.R. Tolkien,59LOTR2.jpg,Fantasy,"The fellowship is broken, and Frodo and Sam must continue their journey alone, while Aragorn, Legolas, and Gimli fight to protect Middle-earth. The story deepens the battle between the forces of darkness and light. Themes of unity, sacrifice, and the consequences of power are explored."
+60,The Return of the King,J.R.R. Tolkien,60LOTR3.jpg,Fantasy,"The final confrontation between the forces of good and evil takes place as Frodo nears the end of his perilous journey. The fate of Middle-earth hangs in the balance as alliances are tested and sacrifices are made. The novel delves into themes of hope, bravery, and the enduring power of friendship."
+34,Famous Last Words,Gillian McAllister,34FLW.jpg,Thriller,"A woman investigates a series of mysterious deaths that appear to be connected by a common thread. As she digs deeper, she uncovers shocking secrets that challenge everything she thought she knew. This gripping thriller explores themes of guilt, obsession, and the consequences of one's actions."
+35,The Housemaid,Freida McFadden,35House1.jpg,Thriller,"A struggling housemaid uncovers disturbing secrets in the home of her wealthy employer. As she gets drawn into a dangerous game, she must confront her own past. The novel explores themes of power, control, and moral ambiguity."
+36,The Housemaid's Secret,Freida McFadden,36House2.jpg,Thriller,"The gripping sequel to *The Housemaid* reveals even darker secrets within the household. As the maid navigates new dangers, the line between right and wrong becomes increasingly blurred. This book delves into manipulation, revenge, and the human desire for freedom."
+37,The Housemaid is Watching,Freida McFadden,37House3.jpg,Thriller,"In this third installment, the housemaid's dark past continues to haunt her as she uncovers a new set of twisted secrets. As she unravels the mystery, she must make dangerous choices to protect herself and those she loves. The story explores manipulation, betrayal, and survival."
+38,The Silent Patient,Alex Michaelides,38Silent.jpg,Thriller,"A renowned painter, Alicia Berenson, is accused of murdering her husband and then stops speaking. A psychotherapist becomes obsessed with uncovering the truth behind her silence. The book explores themes of obsession, trauma, and the complexity of the human psyche."
+39,Gone Girl,Gillian Flynn,39GoneGirl.jpg,Thriller,"When Amy Dunne disappears on her fifth wedding anniversary, her husband Nick becomes the prime suspect. The investigation reveals dark secrets about their marriage and the manipulations at play. This psychological thriller explores themes of deception, media influence, and the facades of marriage."
+40,The Da Vinci Code,Dan Brown,40DaVinci.jpg,Thriller,"Harvard symbologist Robert Langdon is called to investigate the murder of a curator at the Louvre. The case leads him on a journey through European history, art, and secret societies. The novel explores themes of religion, conspiracy, and the hidden truths of history."
+41,The Girl With The Dragon Tattoo,Stieg Larsson,41Dragon.jpg,Thriller,"Journalist Mikael Blomkvist teams up with the brilliant hacker Lisbeth Salander to solve the decades-old mystery of a missing woman. As they uncover the dark secrets of a powerful family, they are thrust into a web of corruption and danger. The book explores justice, revenge, and trust."
+42,Angels & Demons,Dan Brown,42A&D.jpg,Thriller,"Harvard professor Robert Langdon investigates a murder linked to the secretive Illuminati. The investigation leads to a dangerous conspiracy involving the Vatican. The novel explores themes of science versus religion, power, and the consequences of hidden knowledge."
+43,A Good Girl's Guide to Murder,Holly Jackson,43Guide.jpg,Thriller,"Pippa Fitz-Amobi revisits an unsolved murder case for her senior project, only to uncover dangerous secrets. As she digs deeper, she begins to suspect that the wrong person was convicted. The book delves into themes of justice, truth, and the impact of investigation on personal lives."
+4,Twisted Lies,Ana Huang,4TwistedLies.jpg,Romance,"A passionate romance filled with twists and secrets as the main characters navigate love and lies. As their relationship deepens, both must confront their pasts and the truth behind their actions. The novel explores themes of obsession, trust, and emotional complexity."
+5,Twisted Hate,Ana Huang,5TwistedHate.jpg,Romance,"This novel explores a passionate, hate-to-love romance between two strong-willed characters. Their relationship begins with animosity but quickly turns into something more complicated and intense. Themes of power, vulnerability, and redemption are explored as the characters' feelings evolve."
+6,Twisted Games,Ana Huang,6TwistedGames.jpg,Romance,"A royal bodyguard finds herself falling for her charge's older brother, leading to a forbidden romance. Their love must overcome obstacles of duty, family, and betrayal. The story explores themes of loyalty, sacrifice, and the consequences of forbidden desires."
+7,Twisted Love,Ana Huang,7TwistedLove.jpg,Romance,"A story of intense attraction, passion, and emotional baggage between two characters who struggle to let go of their pasts. As their relationship grows, they face obstacles that threaten to tear them apart. The novel explores the darker side of love, obsession, and trust."
+8,Yours Truly,Abby Jimenez,8YoursTruly.jpg,Romance,"A heartwarming and humorous romantic comedy about two people who unexpectedly find love while navigating life's challenges. The characters face personal struggles that make their love story even more meaningful. Themes of self-acceptance, healing, and growth are central to this novel."
+9,Red, White & Royal Blue,Casey McQuinston,9RWRB.jpg,Romance,"When the son of the U.S. president falls in love with the Prince of Wales, their relationship becomes a global sensation. The novel is a heartfelt exploration of love, identity, and the pressures of public life. It delves into themes of self-discovery, politics, and the freedom to love openly."
+10,The Hating Game,Sally Thorne,10HatingGame.jpg,Romance,"Two coworkers who can't stand each other end up competing for the same promotion, only to discover there's more beneath their animosity. This witty and romantic story is a classic enemies-to-lovers tale filled with humor, tension, and chemistry. The book explores themes of rivalry, vulnerability, and love."
+11,It Ends With Us,Colleen Hoover,11EndsUs.jpg,Romance,"Lily Bloom falls in love with Ryle, but their relationship is complicated by her past and his personal struggles. As they navigate love, loss, and heartbreak, Lily must make difficult decisions about her future. The book explores themes of domestic violence, love, and the strength to break free from toxic relationships."
+12,It Starts With Us,Colleen Hoover,12StartsUs.jpg,Romance,"The sequel to *It Ends With Us*, following Lily and her journey of healing and discovering a new love. As she faces the challenges of starting over, she learns that her past doesn't define her future. This novel explores themes of healing, new beginnings, and the power of love."
+13,Ugly Love,Colleen Hoover,13UglyLove.jpg,Romance,"A powerful and emotional love story between Tate and Miles, who struggle with their deep-seated emotional wounds. As they navigate a passionate but complicated relationship, they must confront their pasts to move forward. The book explores themes of grief, healing, and the transformative power of love."
+14,Wuthering Heights,Emily Bronte,14WutheringHeight.jpg,Romance,"A tragic and passionate love story between Heathcliff and Catherine, set on the Yorkshire moors. Their destructive love affects everyone around them, leading to heartbreak and tragedy. The novel delves into themes of obsession, revenge, and the power of love."
+15,Pride and Prejudice,Jane Austen,15Pride.jpg,Romance,"Elizabeth Bennet's witty and independent spirit clashes with the proud Mr. Darcy in this classic romance. As they navigate misunderstandings and social expectations, their relationship deepens into love. The book explores themes of class, marriage, and the importance of understanding one another."
+19,1984,George Orwell,19.1984.jpg,Classics,"In a totalitarian society controlled by Big Brother, Winston Smith struggles to find truth and individuality. This dystopian novel explores the dangers of surveillance, government control, and the manipulation of truth. The book is a powerful warning against the loss of personal freedom."
+20,The Hobbit,J.R.R. Tolkien,20Hobbit.jpg,Classics,"Bilbo Baggins embarks on an unexpected journey with a group of dwarves to reclaim their homeland from a dragon. Along the way, he discovers his own bravery and wisdom. The novel explores themes of adventure, heroism, and the transformative power of friendship."
+21,Romeo and Juliet,William Shakespeare,21Romeo.jpg,Classics,"In this tragic love story, Romeo and Juliet fall in love despite their families' bitter feud, leading to a series of misunderstandings and their untimely deaths. The play explores themes of fate, love, and the destructive consequences of family conflict."
+22,Matilda,Roald Dahl,22Matilda.jpg,Classics,"Matilda is a gifted young girl with extraordinary intelligence and telekinetic powers. She uses her talents to stand up against the cruel headmistress and her neglectful parents. The story is about empowerment, overcoming adversity, and the importance of kindness."
+23,The Shining,Stephen King,23Shining.jpg,Classics,"Jack Torrance, his wife Wendy, and their son Danny move to the isolated Overlook Hotel for the winter, where Jack slowly descends into madness. As supernatural forces haunt the hotel, Danny's psychic abilities offer a glimpse of the horrors to come. The novel explores themes of isolation, madness, and the supernatural."
+24,Holes,Louis Sachar,24Holes.jpg,Classics,"Stanley Yelnats is sent to a mysterious camp where the boys are forced to dig holes in the desert. As he unravels the history behind the camp, Stanley discovers a hidden treasure. The story is a mix of adventure, friendship, and the importance of family legacy."
+25,Life of Pi,Yann Martel,25Pi.jpg,Classics,"Pi Patel survives a shipwreck and is left stranded on a lifeboat with a Bengal tiger. Over months, he learns about faith, survival, and the power of storytelling. The novel explores themes of spirituality, resilience, and the human spirit's ability to adapt to adversity."
+26,Gone With the Wind,Margaret Mitchell,26Wind.jpg,Classics,"Scarlett O'Hara navigates the tumultuous events of the American Civil War, focusing on love, loss, and survival. As she struggles to keep her family and plantation intact, Scarlett's strength and determination drive her forward. The novel delves into themes of love, war, and the changing South."
+27,The Lorax,Dr. Seuss,27TheLorax.jpg,Classics,"The Lorax speaks for the trees in this environmental tale, warning about the dangers of greed and the importance of conservation. As the Once-ler ravages the land, the Lorax fights to protect the forest. The story is a call to action for environmental responsibility and the preservation of nature."
+28,War and Peace,Leo Tolstoy,28War.jpg,Classics,"Set during the Napoleonic Wars, this epic novel explores the lives of Russian aristocrats and their personal struggles. The characters must navigate love, war, and the shifting tides of history. The book touches on themes of destiny, moral choices, and the effects of war on society."
+61,Crime and Punishment,Feodor Dostoievski,61CrimePunishment.jpg,Classics,"Rodion Raskolnikov, a young man struggling with poverty, commits a crime and wrestles with guilt and the consequences of his actions. As he faces inner turmoil, the novel explores deep psychological and moral questions. Themes of redemption, guilt, and the nature of evil are central."
+62,The Metamorphosis,Franz Kafka,62Kafka.jpg,Classics,"Gregor Samsa wakes up one morning to find himself transformed into a giant insect, leading to his social and psychological decline. As his family struggles with the change, the novel explores alienation, identity, and the absurdity of human existence."
+63,A Court Of Thorns and Roses,Sarah J Maas,63ACOTAR.jpg,Romance,"Feyre, a huntress, is drawn into a faerie realm where she discovers a dark, magical world and a forbidden romance. As she faces trials and danger, Feyre must choose between love and duty. The book explores themes of sacrifice, love, and the blurred lines between good and evil."
+64,Murder on the Orient Express,Agatha Christie,64Orient.jpg,Thriller,"Detective Hercule Poirot investigates a murder on the famous train, uncovering a complex web of secrets and lies. As he interrogates the passengers, he reveals surprising truths about their pasts. The novel explores justice, morality, and the nature of truth."
+65,Five Survive,Holly Jackson,65FiveSurvive.jpg,Thriller,"Five friends are trapped in a vehicle during a road trip and must navigate life-threatening danger when one of them turns out to be a killer. As secrets unravel, the tension builds in a deadly game of survival. The book explores themes of trust, deception, and the darkness lurking within friendships."

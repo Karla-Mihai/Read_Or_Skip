@@ -11,7 +11,7 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     cover_image = models.ImageField(upload_to='books/covers/', default='images/dracula.jpg')
     categories = models.ManyToManyField(Category, related_name='books') 
     popularity_score = models.FloatField(default=0) 
