@@ -12,6 +12,7 @@ h1 {
     padding-top: 60px;
 }
 
+
 /* Categories Section */
 .categories {
     background-color: #f8f8f8;
@@ -110,6 +111,10 @@ h1 {
     font-size: 0.95rem;
     color: #666;
     margin: 5px 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Responsive Styles */
