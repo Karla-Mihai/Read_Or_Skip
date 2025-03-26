@@ -1,35 +1,30 @@
-.home-wrapper {
-    display: flex;
-    gap: 20px;
-    margin: 20px;
+/* Overall Body Style */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Forum', sans-serif;
 }
 
-.home-header {
+/* Home Header */
+h1 {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 36px;
+    padding-top: 60px;
 }
 
-.trending {
-    flex: 1; /* Adjust the size */
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.books-grid {
-    display: flex;
-    flex-direction: column; /* Stack books */
-    gap: 10px;
-}
-
+/* Categories Section */
 .categories {
-    flex: 2; /* Larger size for categories */
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-bottom: 20px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .categories-list ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .categories-list li {
@@ -37,15 +32,104 @@
     margin: 10px;
 }
 
+/* Category Buttons with Background Images */
 .categories-list a {
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 12px 25px; /* Smaller padding for smaller buttons */
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 25px; /* More rounded corners */
+    background-size: 75%; /* Ensures the image covers the button */
+    background-position: center; /* Centers the background image */
+    display: inline-block;
+    height: 65px; /* Slightly taller height */
+    line-height: 40px; /* Vertically centers the text */
+    font-size: 1.1rem; /* Slightly smaller font size */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    min-width: 160px; /* Minimum width for consistency */
 }
 
+/* Category Buttons with Specific Background Images */
+.categories-list li:nth-child(1) a {
+    background-image: url('/static/images/fantasy_button.jpeg');
+}
+
+.categories-list li:nth-child(2) a {
+    background-image: url('/static/images/thriller_button.jpeg');
+}
+
+.categories-list li:nth-child(3) a {
+    background-image: url('/static/images/romance_button.jpeg');
+}
+
+.categories-list li:nth-child(4) a {
+    background-image: url('/static/images/classics_button.jpeg');
+}
+
+/* Hover effect for Category Buttons */
 .categories-list a:hover {
-    background-color: #0056b3;
+    opacity: 0.8; /* Optional: change opacity on hover */
+    background-color: rgba(0, 0, 0, 0.3); /* Optional: darken the background on hover */
+}
+
+/* Trending Section */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 0 20px 40px 20px;
+    justify-items: center;
+}
+
+.book-card {
+    background-color: #b99f89;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 220px;
+    text-align: center;
+    padding: 15px 10px;
+    height: auto;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    border-bottom: 2px solid #ddd;
+}
+
+.book-card h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 15px 0 5px 0;
+    font-weight: bold;
+}
+
+.book-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }

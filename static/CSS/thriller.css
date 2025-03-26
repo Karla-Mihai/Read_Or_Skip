@@ -28,6 +28,16 @@ p {
     justify-items: center;                   
 }
 
+.books-grid .book-card h3 a {
+    color: #333; /* Default color */
+    text-decoration: none; /* Removes underline from links */
+}
+
+/* Hover effect for the book title link */
+.books-grid .book-card h3 a:hover {
+    color:#242b39 ; /* Hover color, change to the color you prefer */
+}
+
 
 .book-card {
     background-color: #dbc3b0;

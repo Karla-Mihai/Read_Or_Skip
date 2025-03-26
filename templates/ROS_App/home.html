@@ -1,35 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <div class="home-wrapper">
-        <div class="home-header">
-            <h1>Read It or Skip It</h1>
+    <h1>Read It or Skip It</h1>
+    <h2>Categories</h2>
+        <div class="categories-list">
+            <ul>
+                <li><a href="{% url 'fantasy' %}"></a></li>
+                <li><a href="{% url 'thriller' %}"></a></li>
+                <li><a href="{% url 'romance' %}"></a></li>
+                <li><a href="{% url 'classics' %}"></a></li>
+            </ul>
         </div>
-        <section class="trending">
-            <h2>Trending</h2>
-            <div class="books-grid">
-                {% for book in trending_books %}
-                    <div class="book-card">
-                        <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}">
-                        <h3>{{ book.title }}</h3>
-                        <p>by {{ book.author }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
-        <section class="categories">
-            <h2>Categories</h2>
-            <div class="categories-list">
-                <ul>
-                    <li><a href="{% url 'fantasy' %}">Fantasy</a></li>
-                    <li><a href="{% url 'thriller' %}">Thriller</a></li>
-                    <li><a href="{% url 'romance' %}">Romance</a></li>
-                    <li><a href="{% url 'classics' %}">Classics</a></li>
-                </ul>
-            </div>
-        </section>
+
+        <h2>Trending Books</h2>
+        <p style="font-size:20px;">Explore the latest trending books.</p>
+
+        <div class="books-grid">
+            {% for book in trending_books %}
+                <div class="book-card">
+                    <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}">
+                    <h3>{{ book.title }}</h3>
+                    <p>by {{ book.author }}</p>
+                </div>
+            {% endfor %}
+        </div>
 {% endblock %}

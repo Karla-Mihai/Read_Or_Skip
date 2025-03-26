@@ -18,8 +18,9 @@ from django.shortcuts import render
 def home_view(request):
     trending_books = [
         {'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg', 'id': 1},
-        {'title': 'The Little Prince', 'author': 'Antoine de Saint-Exupéry', 'cover': 'thelittleprince.jpg', 'id': 2},
-        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': 'lordoftherings.jpg', 'id': 3},
+        {'title': 'The Midnight Library', 'author': 'Matt Haig', 'cover': '49Mid.jpg', 'id': 2},
+        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': '58LOTR1.jpg', 'id': 3},
+        {'title': 'It Ends With Us', 'author': 'Collen Hoover', 'cover':'11EndsUs.jpg','id': 4},
     ]
     categories = ['Fantasy', 'Classics', 'Thriller', 'Romance']
 
@@ -35,26 +36,20 @@ def categories_view(request):
     return render(request, 'ROS_App/categories.html', {'categories': categories})
 
 def book_detail(request, book_id):
-    books = [
-        {'id': 1, 'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg'},
-        {'id': 2, 'title': 'The Little Prince', 'author': 'Antoine de Saint-Exupéry', 'cover': 'thelittleprince.jpg'},
-        {'id': 3, 'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': 'lordoftherings.jpg'},
-        {'id': 4, 'title': 'Twisted lies', 'author': 'Ali Hazelwood', 'cover': '4TwistedLies.jpg', 'description': 'A romance novel.'},
-        {'id': 5, 'title': 'Twisted hate', 'author': 'Ali Hazelwood', 'cover': '5TwistedHate.jpg', 'description': 'A romance novel.'},
-    
-    ]
-    
-    # Find the book in hardcoded data
-    book = next((b for b in books if b['id'] == book_id), None)
+    all_books_by_category = load_books_from_csv()
+    all_books = sum(all_books_by_category.values(), [])
+
+# search for book in csv    
+    book = next((b for b in all_books if int(b['id']) == book_id), None)
     if not book:
         raise Http404("Book not found")
-
-    # Set default description if missing
+    
+# default
     book_description = book.get('description', 'No description available')
 
     # Get or create a database Book instance for reviews
     db_book, created = Book.objects.get_or_create(
-        id=book['id'],
+        id=book_id,
         defaults={
             'title': book['title'],
             'author': book['author'],
@@ -83,6 +78,9 @@ def book_detail(request, book_id):
         'form': form,
         'average_rating': average_rating
     })
+
+    
+
 def tbr_list(request):
     if request.user.is_authenticated:
         # Fetch all books in the user's TBR list
@@ -366,6 +364,23 @@ def classics_view(request):
     books = load_books_from_csv()
     classics_books = books.get('Classics', [])  
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
+def search_books(request):
+    query = request.GET.get('q', '').strip().lower()
+    print(f"Search query: {query}")  # Debugging
+    
+    category_redirects = {
+        'fantasy': 'fantasy',
+        'thriller': 'thriller',
+        'romance': 'romance',
+        'classics': 'classics',
+    }
+    
+    print(f"Checking if '{query}' is in {category_redirects.keys()}")  # Debugging
+    if query in category_redirects:
+        print(f"Redirecting to {category_redirects[query]}")  # Debugging
+        return redirect(category_redirects[query])
+    
+    return redirect('home')
 
 
 def logout_view(request):
