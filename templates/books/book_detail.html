@@ -9,7 +9,7 @@
     <h1>{{ book.title }}</h1>
     <h3>Author: {{ book.author }}</h3>
     <!-- Display the book cover image -->
-    <img src="{% static 'images/dracula.jpg' %}" alt="{{ book.title }}" class="book-cover">
+    <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}" class="book-cover">
     <p>{{ book.description }}</p>
 
     <!-- Display the average rating as stars -->
