@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404  # Ensure this is imported
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Book, Review, TBR, SkippedBooks
 from .forms import ReviewForm, UpdateAccountForm
 from django.db import models 
@@ -35,44 +35,54 @@ def categories_view(request):
     return render(request, 'ROS_App/categories.html', {'categories': categories})
 
 def book_detail(request, book_id):
-    # Hardcoded books data
     books = [
-        {'id': 1, 'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg', 'description': 'A classic horror novel.'},
-        {'id': 2, 'title': 'The Little Prince', 'author': 'Antoine de Saint-Exupéry', 'cover': 'thelittleprince.jpg', 'description': 'A philosophical tale.'},
-        {'id': 3, 'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': 'lordoftherings.jpg', 'description': 'An epic fantasy series.'},
+        {'id': 1, 'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg'},
+        {'id': 2, 'title': 'The Little Prince', 'author': 'Antoine de Saint-Exupéry', 'cover': 'thelittleprince.jpg'},
+        {'id': 3, 'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': 'lordoftherings.jpg'},
+        {'id': 4, 'title': 'Twisted lies', 'author': 'Ali Hazelwood', 'cover': '4TwistedLies.jpg', 'description': 'A romance novel.'},
+        {'id': 5, 'title': 'Twisted hate', 'author': 'Ali Hazelwood', 'cover': '5TwistedHate.jpg', 'description': 'A romance novel.'},
+    
     ]
     
-    # Find the book that matches the book_id
+    # Find the book in hardcoded data
     book = next((b for b in books if b['id'] == book_id), None)
-    
     if not book:
-        return redirect('home')  # If book not found, redirecting to the home
+        raise Http404("Book not found")
 
-    reviews = []  # For now, assume there are no reviews
+    # Set default description if missing
+    book_description = book.get('description', 'No description available')
 
-    # Check if there are reviews in the database
-    reviews = Review.objects.filter(book__title=book['title'])
-    average_rating = reviews.aggregate(models.Avg('rating'))['rating__avg'] if reviews.exists() else 0
-    return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'average_rating': average_rating})
+    # Get or create a database Book instance for reviews
+    db_book, created = Book.objects.get_or_create(
+        id=book['id'],
+        defaults={
+            'title': book['title'],
+            'author': book['author'],
+            'description': book_description,
+            'cover_image': f"books/covers/{book['cover']}"
+        }
+    )
 
-    # Handle review submission
     if request.method == 'POST':
-        form = ReviewForm(request.POST) 
+        form = ReviewForm(request.POST)
         if form.is_valid():
-            new_review = form.save(commit=False)
-            new_review.user = request.user  # Attach the logged-in user to the review
-
-            # Simulate a Book instance for review association
-            temp_book = Book(id=book['id'], title=book['title'], author=book['author'], description=book['description'], cover_image=book['cover'])
-            new_review.book = temp_book  # Assign the temporary Book instance to the review
-
-            new_review.save()  # Save the review
-            return redirect('book_detail', book_id=book_id)  # Redirect to the same page after review submission
+            review = form.save(commit=False)
+            review.user = request.user
+            review.book = db_book
+            review.save()
+            return redirect('book_detail', book_id=book_id)
     else:
         form = ReviewForm()
 
-    return render(request, 'books/book_detail.html', {'book': book, 'reviews': reviews, 'form': form, 'average_rating': average_rating})
+    reviews = Review.objects.filter(book=db_book)
+    average_rating = reviews.aggregate(models.Avg('rating'))['rating__avg'] or 0
 
+    return render(request, 'books/book_detail.html', {
+        'book': {**book, 'id': db_book.id, 'description': book_description},
+        'reviews': reviews,
+        'form': form,
+        'average_rating': average_rating
+    })
 def tbr_list(request):
     if request.user.is_authenticated:
         # Fetch all books in the user's TBR list
@@ -199,13 +209,12 @@ def book_review(request, review_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user  # Assign the logged-in user to the review
-            review.book = book  # Assign the book being reviewed
+            review.book = book  
             review.save()
-            return redirect('book_detail', book_id=review.book.id)  # Redirect to the book detail page
+            return redirect('book_detail', book_id=review.book.id) 
     else:
         form = ReviewForm()
 
-    # Fetch all reviews for the book
     reviews = Review.objects.filter(book=book).order_by('-created_at')
     return render(request, 'ROS_App/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
 
@@ -269,19 +278,18 @@ def update_account_view(request):
     if request.method == "POST":
         form = UpdateAccountForm(request.POST, instance=request.user)
         if form.is_valid():
-            # Update email and username
             user = form.save()
 
-            # Update password if provided
+          
             old_password = form.cleaned_data.get("old_password")
             new_password1 = form.cleaned_data.get("new_password1")
             if old_password and new_password1:
                 user.set_password(new_password1)
                 user.save()
-                update_session_auth_hash(request, user)  # Keep the user logged in
+                update_session_auth_hash(request, user)  
 
             messages.success(request, "Your account details have been updated successfully!")
-            return redirect("myAccount")  # Redirect to the account page
+            return redirect("myAccount")  
         else:
             messages.error(request, "Please correct the errors below.")
     else:
@@ -308,7 +316,7 @@ def delete_account(request):
         messages.success(request, "Your account has been permanently deleted.")
         return redirect('home')
     
-    # If GET request, redirect to confirmation
+
     return redirect('confirm_delete')
 
 
@@ -332,7 +340,7 @@ def load_books_from_csv():
                 'cover': row['cover'],
             }
             category = row['category']
-            if category in books:  # Ensure the category exists in the dictionary
+            if category in books:
                 books[category].append(book_data)
     
     return books
