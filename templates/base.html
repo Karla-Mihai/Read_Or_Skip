@@ -30,14 +30,17 @@
 
             <!-- Right section: Log Out, My Account links, and search input -->
             <div class="right">
-                <ul>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    <li><a href="{% url 'myAccount' %}">My Account</a></li>
-                </ul>
-                <form action="{% url 'search_books' %}" method="get">
-                    <input type="text" name="q" placeholder="Search...">
-                    <button type="submit">Search</button>
-                </form>
+                {% if user.is_authenticated %}
+                    <ul>
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        <li><a href="{% url 'myAccount' %}">My Account</a></li>
+                    </ul>
+                {% endif %}
+                <div class="search-container">
+                    <form class="search-form" action="{% url 'search_books' %}" method="get">
+                        <input class="search-input" type="text" name="q" placeholder="Search books...">
+                    </form>
+                </div>
             </div>
     </div>
     {% block content %}{% endblock %}
