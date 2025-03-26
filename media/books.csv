@@ -1,0 +1,45 @@
+id,title,author,cover,category
+49,The Midnight Library,Matt Haig,49Mid.jpg,Fantasy
+50,The Ballad of Songbirds and Snakes,Suzanne Collins,50balled.jpg,Fantasy
+51,A Game of Thrones,George R.R. Martin,51GOT2.jpg,Fantasy
+52,Harry Potter and the Sorcerer's Stone,J.K. Rowling,52HP1.jpg,Fantasy
+53,Harry Potter and the Chamber of Secrets,J.K. Rowling,53HP2.jpg,Fantasy
+54,Harry Potter and the Prisoner of Azkaban,J.K. Rowling,54HP3.jpg,Fantasy
+55,Harry Potter and the Goblet of Fire,J.K. Rowling,55HP4.jpg,Fantasy
+56,Harry Potter and the Order of the Phoenix,J.K. Rowling,56HP5.jpg,Fantasy
+57,Harry Potter and the Half-Blood Prince,J.K. Rowling,57HP6.jpg,Fantasy
+58,The Fellowship of the Ring,J.R.R. Tolkien,58LOTR1.jpg,Fantasy
+59,The Two Towers,J.R.R. Tolkien,59LOTR2.jpg,Fantasy
+60,The Return of the King,J.R.R. Tolkien,60LOTR3.jpg,Fantasy
+34,Famous Last Words,Gillian McAllister,34FLW.jpg,Thriller
+35,The Housemaid,Freida McFadden,35House1.jpg,Thriller
+36,The Housemaid's Secret,Freida McFadden,36House2.jpg,Thriller
+37,The Housemaid is Watching,Freida McFadden,37House3.jpg,Thriller
+38,The Silent Patient,Alex Michaelides,38Silent.jpg,Thriller
+39,Gone Girl,Gillian Flynn,39GoneGirl.jpg,Thriller
+40,The Da Vinci Code,Dan Brown,40DaVinci.jpg,Thriller
+41,The Girl With The Dragon Tattoo,Stieg Larsson,41Dragon.jpg,Thriller
+42,Angels & Demons,Dan Brown,42A&D.jpg,Thriller
+43,A Good Girl's Guide to Murder,Holly Jackson,43Guide.jpg,Thriller
+4,Twisted Lies,Ali Hazelwood,4TwistedLies.jpg,Romance
+5,Twisted Hate,Ali Hazelwood,5TwistedHate.jpg,Romance
+6,Twisted Games,Ali Hazelwood,6TwistedGames.jpg,Romance
+7,Twisted Love,Ali Hazelwood,7TwistedLove.jpg,Romance
+8,Yours Truly,Abby Jimenez,8YoursTruly.jpg,Romance
+9,Red, White & Royal Blue,Casey McQuinston,9RWRB.jpg,Romance
+10,The Hating Game,Sally Thorne,10HatingGame.jpg,Romance
+11,It Ends With Us,Colleen Hoover,11EndsUs.jpg,Romance
+12,It Starts With Us,Colleen Hoover,12StartsUs.jpg,Romance
+13,Ugly Love,Colleen Hoover,13UglyLove.jpg,Romance
+14,Wuthering Heights,Emily Bronte,14WutheringHeight.jpg,Romance
+15,Pride and Prejudice,Jane Austen,15Pride.jpg,Romance
+19,1984,George Orwell,19.1984.jpg,Classics
+20,The Hobbit,J.R.R. Tolkien,20Hobbit.jpg,Classics
+21,Romeo and Juliet,William Shakespeare,21Romeo.jpg,Classics
+22,Matilda,Roald Dahl,22Matilda.jpg,Classics
+23,The Shining,Stephen King,23Shining.jpg,Classics
+24,Holes,Louis Sachar,24Holes.jpg,Classics
+25,Life of Pi,Yann Martel,25Pi.jpg,Classics
+26,Gone With the Wind,Margaret Mitchell,26Wind.jpg,Classics
+27,The Lorax,Dr. Seuss,27TheLorax.jpg,Classics
+28,War and Peace,Leo Tolstoy,28War.jpg,Classics
