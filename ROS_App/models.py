@@ -24,6 +24,13 @@ class TBR(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     added_on = models.DateTimeField(auto_now_add=True)
 
+# Model for SkippedBooks
+class SkippedBooks(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    added_on = models.DateTimeField(auto_now_add=True)
+
+
 # Model for Reviews
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

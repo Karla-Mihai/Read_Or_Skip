@@ -28,6 +28,9 @@
         <button type="submit" class="btn btn-info mb-3">Go to TBR List</button> <!-- Button to go to TBR List -->
     </form>
 
+    <!-- Add to Skipped Button -->
+    <button id="add-to-skipped-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Skip</button>
+
     <h4>Write a Review:</h4>
     <form method="POST" class="review-form">
         {% csrf_token %}
@@ -100,6 +103,31 @@
         .then(data => {
             if (data.success) {
                 alert('Book added to TBR list!');
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Function to add a book to the skipped list via AJAX
+    document.getElementById('add-to-skipped-btn').addEventListener('click', function() {
+        var bookId = this.getAttribute('data-book-id'); // Get the book ID
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value; // CSRF Token
+        
+        // Send AJAX request to add the book to skipped list
+        fetch(`/book/${bookId}/add_to_skipped/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify({book_id: bookId}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Book added to skipped list!');
             } else {
                 alert(data.message);
             }

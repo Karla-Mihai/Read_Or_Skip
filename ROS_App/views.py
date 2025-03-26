@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404  # Ensure this is imported
-from .models import Book, Review, TBR
+from .models import Book, Review, TBR, SkippedBooks
 from .forms import ReviewForm, UpdateAccountForm
 from django.db import models 
 from django.contrib.auth.models import User  
@@ -116,6 +116,51 @@ def delete_from_tbr(request, book_id):
         
         # Redirect to the user's TBR list after deletion
         return redirect('tbr_list')
+    
+    # Redirect to the login page if the user is not logged in
+    return redirect('login')
+
+def SkippedBooks_list(request):
+    if request.user.is_authenticated:
+        Skipped_books = SkippedBooks.objects.filter(user=request.user)  
+        books_in_Skipped = [entry.book for entry in Skipped_books]  
+        return render(request, 'ROS_App/skipped_books_list.html', {'books': books_in_Skipped})  
+    else:
+        return redirect('login') 
+    
+@login_required
+def add_to_Skipped(request, book_id):
+    # Ensure the request is POST and the user is authenticated
+    if request.method == 'POST' and request.user.is_authenticated:
+        book = get_object_or_404(Book, id=book_id)
+
+        # Check if the book is already in the skipped list
+        if not SkippedBooks.objects.filter(user=request.user, book=book).exists():
+            # Add the book to the skipped list if it's not already there
+            SkippedBooks.objects.create(user=request.user, book=book)
+            return JsonResponse({'success': True})  # Respond with success
+        
+        # If the book is already in the skipped list, return failure
+        return JsonResponse({'success': False, 'message': 'This book is already in your skipped list.'})
+
+    # If the user is not authenticated, return failure
+    return JsonResponse({'success': False, 'message': 'You need to be logged in to add a book to Skipped books.'})
+
+
+def delete_from_Skipped(request, book_id):
+    # Get the book object by its ID
+    book = get_object_or_404(Book, id=book_id)
+    
+    # Check if the user is authenticated before removing the book from skipped book list
+    if request.user.is_authenticated:
+        # Get the TBR entry for the logged-in user and the selected book
+        skippedBook_entry = SkippedBooks.objects.filter(user=request.user, book=book).first()
+        
+        if skippedBook_entry:
+            skippedBook_entry.delete()  # Delete the skipped book entry
+        
+        # Redirect to the user's skipped book list after deletion
+        return redirect('skipped_book_list')
     
     # Redirect to the login page if the user is not logged in
     return redirect('login')

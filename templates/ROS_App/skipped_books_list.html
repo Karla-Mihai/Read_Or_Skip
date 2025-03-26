@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}  <!-- Load the static tag library here -->
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Your skipped books</h1>
+
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>{{ book.description }}</p>
+                    <img src="{% static 'images/'|add:book.cover_image %}" alt="{{ book.title }}" class="book-cover">
+                    
+                    <!-- Delete from skipped books button -->
+                    <form method="POST" action="{% url 'delete_from_skipped' book.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove from Skipped books</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You don't have any skipped books.</p>
+    {% endif %}
+</div>
+{% endblock %}
