@@ -29,13 +29,16 @@
             </div>
 
             <!-- Right section: Log Out, My Account links, and search input -->
-                <div class="right">
+            <div class="right">
                 <ul>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     <li><a href="{% url 'myAccount' %}">My Account</a></li>
                 </ul>
-                    <input type="text" placeholder="Search...">
-                </div>
+                <form action="{% url 'search_books' %}" method="get">
+                    <input type="text" name="q" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
     </div>
     {% block content %}{% endblock %}
 </body>

@@ -428,6 +428,23 @@ def classics_view(request):
     books = load_books_from_csv()
     classics_books = books.get('Classics', [])  
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
+def search_books(request):
+    query = request.GET.get('q', '').strip().lower()
+    print(f"Search query: {query}")  # Debugging
+    
+    category_redirects = {
+        'fantasy': 'fantasy',
+        'thriller': 'thriller',
+        'romance': 'romance',
+        'classics': 'classics',
+    }
+    
+    print(f"Checking if '{query}' is in {category_redirects.keys()}")  # Debugging
+    if query in category_redirects:
+        print(f"Redirecting to {category_redirects[query]}")  # Debugging
+        return redirect(category_redirects[query])
+    
+    return redirect('home')
 
 
 def logout_view(request):
