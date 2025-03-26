@@ -1,0 +1,278 @@
+/* Book Detail Container */
+.book-detail-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f9f5f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Forum', sans-serif;
+}
+
+/* Book Header Section */
+.book-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.book-cover-container {
+    flex: 0 0 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ebd9d1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.book-cover:hover {
+    transform: scale(1.03);
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-size: 2.2rem;
+    color: #4d402e;
+    margin-bottom: 0.5rem;
+}
+
+.book-author {
+    font-size: 1.4rem;
+    color: #816f56;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.book-description {
+    line-height: 1.6;
+    color: #5a3e3e;
+    margin-bottom: 2rem;
+}
+
+/* Rating Section */
+.rating-section {
+    margin-bottom: 2rem;
+}
+
+.rating-title {
+    font-size: 1.2rem;
+    color: #4d402e;
+    margin-bottom: 0.5rem;
+}
+
+.star-rating {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.star {
+    color: #ccc;
+}
+
+.star.filled {
+    color: #ffcc00;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Forum', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-tbr {
+    background: #816f56;
+    color: white;
+}
+
+.btn-tbr:hover {
+    background: #6c757d;
+    transform: translateY(-2px);
+}
+
+.btn-skip {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-skip:hover {
+    background: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.btn-tbr-list {
+    background: #4d402e;
+    color: white;
+}
+
+.btn-tbr-list:hover {
+    background: #332b1f;
+    transform: translateY(-2px);
+}
+
+/* Review Form */
+.review-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4d402e;
+}
+
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #c4b5a7;
+    border-radius: 5px;
+    background: #f9f5f1;
+    font-family: 'Forum', sans-serif;
+}
+
+.form-group textarea {
+    min-height: 120px;
+}
+
+.btn-submit {
+    background: #816f56;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #6c757d;
+    transform: translateY(-2px);
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 3rem;
+}
+
+.reviews-title {
+    font-size: 1.5rem;
+    color: #4d402e;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ebd9d1;
+}
+
+.review {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-user {
+    font-weight: 600;
+    color: #4d402e;
+}
+
+.review-rating {
+    color: #816f56;
+    font-style: italic;
+}
+
+.review-content {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #5a3e3e;
+}
+
+.review-summary {
+    font-style: italic;
+    color: #816f56;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ebd9d1;
+}
+
+.review-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-edit {
+    background: #ffc107;
+    color: #4d402e;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .book-header {
+        flex-direction: column;
+    }
+    
+    .book-cover-container {
+        flex: 1 1 auto;
+        height: auto;
+        max-height: 400px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-btn,
+    .btn-submit {
+        width: 100%;
+    }
+}
