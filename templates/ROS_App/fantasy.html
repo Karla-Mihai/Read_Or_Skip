@@ -16,7 +16,6 @@
                 </a>
                 <h3><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></h3>
                 <p>by {{ book.author }}</p>
-                <p>Popularity: {{ book.popularity_score }}</p>
             </div>
         {% endfor %}
     </div>
