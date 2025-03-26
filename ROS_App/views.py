@@ -20,8 +20,9 @@ from django.http import Http404
 def home_view(request):
     trending_books = [
         {'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg', 'id': 1},
-        {'title': 'The Little Prince', 'author': 'Antoine de Saint-Exupéry', 'cover': 'thelittleprince.jpg', 'id': 2},
-        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': 'lordoftherings.jpg', 'id': 3},
+        {'title': 'The Midnight Library', 'author': 'Matt Haig', 'cover': '49Mid.jpg', 'id': 2},
+        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': '58LOTR1.jpg', 'id': 3},
+        {'title': 'It Ends With Us', 'author': 'Collen Hoover', 'cover':'11EndsUs.jpg','id': 4},
     ]
     categories = ['Fantasy', 'Classics', 'Thriller', 'Romance']
 
@@ -79,6 +80,8 @@ def book_detail(request, book_id):
         'form': form,
         'average_rating': average_rating
     })
+
+    
 
 def tbr_list(request):
     if request.user.is_authenticated:
