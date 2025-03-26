@@ -19,10 +19,10 @@ from django.http import Http404
 @login_required
 def home_view(request):
     trending_books = [
-        {'title': 'Dracula', 'author': 'Bram Stoker', 'cover': 'dracula.jpg', 'id': 1},
-        {'title': 'The Midnight Library', 'author': 'Matt Haig', 'cover': '49Mid.jpg', 'id': 2},
-        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': '58LOTR1.jpg', 'id': 3},
-        {'title': 'It Ends With Us', 'author': 'Collen Hoover', 'cover':'11EndsUs.jpg','id': 4},
+        {'title': 'Romeo and Juliet', 'author': 'Willian Shakespeare', 'cover': '21Romeo.jpg', 'id': 21},
+        {'title': 'The Midnight Library', 'author': 'Matt Haig', 'cover': '49Mid.jpg', 'id': 49},
+        {'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien', 'cover': '58LOTR1.jpg', 'id': 58},
+        {'title': 'It Ends With Us', 'author': 'Collen Hoover', 'cover':'11EndsUs.jpg','id': 11},
     ]
     categories = ['Fantasy', 'Classics', 'Thriller', 'Romance']
 
