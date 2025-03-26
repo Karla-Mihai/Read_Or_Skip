@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'CSS/update_account.css' %}?v=1.1">
+    <link rel="stylesheet" href="{% static 'CSS/update_account.css' %}">
 {% endblock %}
 {% block content %}
 <div class="update-account-container">
@@ -9,8 +9,11 @@
     <form method="post" class="update-account-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="submit-button">Update</button>
+        <div class="form-buttons">
+            <a href="{% url 'myAccount' %}" class="back-button">Back to My Account</a>
+            <button type="submit" class="submit-button">Update</button>
+        </div>
     </form>
-    <a href="{% url 'myAccount' %}" class="back-link">← Back to My Account</a>
+    
 </div>
 {% endblock %}

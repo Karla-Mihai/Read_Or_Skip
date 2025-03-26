@@ -19,11 +19,12 @@ urlpatterns = [
     path('book/<int:review_id>/edit_review/', views.edit_review, name='edit_review'),
     path('book/<int:book_id>/delete_from_tbr/', views.delete_from_tbr, name='delete_from_tbr'),
     path('book/<int:review_id>/book_review/', views.book_review, name='book_review'),
-    path("update-account/", views.update_account_view, name="update_account"),
+    path("myAccount/update-account/", views.update_account_view, name="update_account"),
+    path("myAccount/delete-account/", views.confirm_delete_account, name="confirm_delete"),
+    path("myAccount/delete-account/confirm-delete/", views.delete_account, name="delete_account"),
     path('categories/fantasy/', views.fantasy_view, name='fantasy'),
     path('categories/thriller/', views.thriller_view, name='thriller'),
     path('categories/romance/', views.romance_view, name='romance'),
     path('categories/classics/', views.classics_view, name='classics'),
-    path('book/<int:book_id>/add_to_tbr/', views.book_detail, name='add_to_tbr')
-    
+    path('book/<int:book_id>/add_to_tbr/', views.book_detail, name='add_to_tbr'),
 ]

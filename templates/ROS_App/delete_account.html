@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/delete_account.css' %}?v=1.1">
+{% endblock %}
+
+{% block content %}
+<div class="delete-account-container">
+    <div class="delete-account-card">  
+        <div class="delete-account-header">  
+            <h2>Delete Your Account</h2>
+        </div>
+        <div class="delete-account-body">  
+            <p class="delete-warning"><strong>Warning:</strong> This will permanently delete:</p>
+            <ul class="delete-account-list">  
+                <li>Your profile</li>
+                <li>All your saved data</li>
+                <li>Account access</li>
+            </ul>
+
+            <form method="post" action="{% url 'delete_account' %}" class="delete-account-form">  
+                {% csrf_token %}
+                <div>
+                    <label for="password">Confirm Password:</label>
+                    <input type="password" name="password" required>
+                </div>
+                
+                <div class="confirmation-checkbox">  
+                    <input type="checkbox" id="confirmDelete" required>
+                    <label for="confirmDelete">I understand this action cannot be undone</label>
+                </div>
+
+                <div class="delete-button-group">  
+                    <a href="{% url 'myAccount' %}" class="btn-cancel">Cancel</a>
+                    <button type="submit" class="btn-delete">Delete Permanently</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

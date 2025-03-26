@@ -1,4 +1,4 @@
-/* update_account.css - Matching style to my_account.css */
+/* update_account.css */
 .update-account-container {
     max-width: 600px;
     margin: 2rem auto;
@@ -49,34 +49,53 @@
     box-shadow: 0 0 0 2px rgba(77, 64, 46, 0.2);
 }
 
-.submit-button {
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch; /* Force equal height */
+}
+
+.form-buttons > * {
+    flex: 1;
     padding: 0.75rem 1.5rem;
-    background-color: #816f56; 
-    color: white;
     border: none;
     border-radius: 4px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    box-sizing: border-box;
+    line-height: 1.2; /* Prevents text overflow issues */
 }
 
-.submit-button:hover {
-    background-color: rgb(75, 54, 21); 
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Submit Button */
+.submit-button {
+    background-color: #816f56;
+    color: white;
 }
 
-.back-link {
-    display: inline-block;
-    margin-top: 1.5rem;
-    color: #4d402e;
+/* Back Button */
+.back-button {
+    background-color: #6c757d;
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
 }
 
-.back-link:hover {
-    color: black;
-    text-decoration: underline;
+/* Hover States */
+.submit-button:hover {
+    background-color: rgb(75, 54, 21);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

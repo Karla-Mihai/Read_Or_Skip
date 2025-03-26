@@ -238,6 +238,29 @@ def update_account_view(request):
         form = UpdateAccountForm(instance=request.user)
     return render(request, "ROS_App/update_account.html", {"form": form})
 
+@login_required
+def confirm_delete_account(request):
+    """GET request shows confirmation form"""
+    return render(request, 'ROS_App/delete_account.html')
+
+@login_required
+def delete_account(request):
+    """POST request processes deletion after password check"""
+    if request.method == 'POST':
+        password = request.POST.get('password', '')
+        
+        if not request.user.check_password(password):
+            messages.error(request, "Incorrect password. Account not deleted.")
+            return redirect('confirm_delete')
+            
+        request.user.delete()
+        logout(request)
+        messages.success(request, "Your account has been permanently deleted.")
+        return redirect('home')
+    
+    # If GET request, redirect to confirmation
+    return redirect('confirm_delete')
+
 def fantasy_view(request):
     fantasy_books = Book.objects.filter(
         categories__name="Fantasy"
