@@ -1,96 +1,114 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 {% load customFilters %}
 
-{% block content %}
-<div class="container mt-5">
-    <h1>{{ book.title }}</h1>
-    <h3>Author: {{ book.author }}</h3>
-    <!-- Display the book cover image -->
-    <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}" class="book-cover">
-    <p>{{ book.description }}</p>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/book_details.css' %}">
+{% endblock %}
 
-    <!-- Display the average rating as stars -->
-    <h4>Average Rating:</h4>
-    <div class="star-rating">
-        {% for i in average_rating|to %}
-            <span class="star {% if average_rating >= i %}filled{% endif %}">&#9733;</span>
-        {% endfor %}
+{% block content %}
+<div class="book-detail-container">
+    <div class="book-header">
+        <div class="book-cover-container">
+            <img src="{% static 'images/' %}{{ book.cover }}" alt="{{ book.title }}" class="book-cover">
+        </div>
+        <div class="book-info">
+            <h1 class="book-title">{{ book.title }}</h1>
+            <h2 class="book-author">By {{ book.author }}</h2>
+            <p class="book-description">{{ book.description }}</p>
+            
+            <div class="rating-section">
+                <h3 class="rating-title">Average Rating:</h3>
+                <div class="star-rating">
+                    {% for i in average_rating|to %}
+                        <span class="star {% if average_rating >= i %}filled{% endif %}">★</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="add-to-tbr-btn" class="action-btn btn-tbr" data-book-id="{{ book.id }}">
+                    <i class="fas fa-bookmark"></i> Add to TBR
+                </button>
+                
+                <form method="GET" action="{% url 'tbr_list' %}">
+                    <button type="submit" class="action-btn btn-tbr-list">
+                        <i class="fas fa-list"></i> My TBR List
+                    </button>
+                </form>
+                
+                <button id="add-to-skipped-btn" class="action-btn btn-skip" data-book-id="{{ book.id }}">
+                    <i class="fas fa-times"></i> Skip
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Add to TBR Button -->
-    <button id="add-to-tbr-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Add to TBR</button>
+    <div class="review-form">
+        <h3>Write a Review</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="review">Your Review:</label>
+                {{ form.review }}
+            </div>
+            <div class="form-group">
+                <label for="summary">Summary (optional):</label>
+                {{ form.summary }}
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                {{ form.rating }}
+            </div>
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-share"></i> Share Review
+            </button>
+        </form>
+    </div>
 
-    <!-- Go to TBR List Button -->
-    <form method="GET" action="{% url 'tbr_list' %}">
-        <button type="submit" class="btn btn-info mb-3">Go to TBR List</button> <!-- Button to go to TBR List -->
-    </form>
-
-    <!-- Add to Skipped Button -->
-    <button id="add-to-skipped-btn" class="btn btn-secondary mb-3" data-book-id="{{ book.id }}">Skip</button>
-
-    <h4>Write a Review:</h4>
-    <form method="POST" class="review-form">
-        {% csrf_token %}
-        <!-- Review Section -->
-        <div class="form-group">
-            <label for="review">Review:</label>
-            {{ form.review }}
-        </div>
-
-        <!-- Summary Section -->
-        <div class="form-group">
-            <label for="summary">Summary:</label>
-            {{ form.summary }}
-        </div>
-
-        <!-- Rating Section -->
-        <div class="form-group">
-            <label for="rating">Rating:</label>
-            {{ form.rating }}
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Share</button>
-    </form>
-
-    <h4>Reviews:</h4>
-    {% for review in reviews %}
-        <div class="review">
-            <p><strong>{{ review.user.username }} (Rating: {{ review.rating }})</strong></p>
-            <p>{{ review.review }}</p>
-            
-            {% if review.summary %}
-                <h5>Summary:</h5>
-                <p>{{ review.summary }}</p>  <!-- Display the summary if it's provided -->
-            {% endif %}
-            
-            <!-- Only allow the review owner to delete or edit their review -->
-            {% if review.user == request.user %}
-                <form method="POST" action="{% url 'delete_review' review.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Delete Review</button>
-                </form>
-
-                <!-- Edit Review Button -->
-                <form method="GET" action="{% url 'edit_review' review.id %}">
-                    <button type="submit" class="btn btn-warning mt-2">Edit Review</button>
-                </form>
-            {% endif %}
-        </div>
-        <hr>
-    {% endfor %}
+    <div class="reviews-section">
+        <h3 class="reviews-title">Reader Reviews</h3>
+        {% for review in reviews %}
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-user">{{ review.user.username }}</span>
+                    <span class="review-rating">(Rating: {{ review.rating }}/5)</span>
+                </div>
+                <div class="review-content">{{ review.review }}</div>
+                {% if review.summary %}
+                    <div class="review-summary">
+                        <strong>Summary:</strong> {{ review.summary }}
+                    </div>
+                {% endif %}
+                
+                {% if review.user == request.user %}
+                    <div class="review-actions">
+                        <form method="POST" action="{% url 'delete_review' review.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="action-btn btn-delete">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </form>
+                        <form method="GET" action="{% url 'edit_review' review.id %}">
+                            <button type="submit" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No reviews yet. Be the first to review!</p>
+        {% endfor %}
+    </div>
 </div>
 
 <script>
     // Function to add a book to the TBR list via AJAX
     document.getElementById('add-to-tbr-btn').addEventListener('click', function() {
-        var bookId = this.getAttribute('data-book-id'); // Get the book ID
-        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value; // CSRF Token
+        var bookId = this.getAttribute('data-book-id');
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         
-        // Send AJAX request to add the book to TBR
         fetch(`/book/${bookId}/add_to_tbr/`, {
             method: 'POST',
             headers: {
@@ -112,10 +130,9 @@
 
     // Function to add a book to the skipped list via AJAX
     document.getElementById('add-to-skipped-btn').addEventListener('click', function() {
-        var bookId = this.getAttribute('data-book-id'); // Get the book ID
-        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value; // CSRF Token
+        var bookId = this.getAttribute('data-book-id');
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         
-        // Send AJAX request to add the book to skipped list
         fetch(`/book/${bookId}/add_to_skipped/`, {
             method: 'POST',
             headers: {
