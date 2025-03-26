@@ -11,37 +11,35 @@
 </head>
 <body>
     <div class="navbar">
-            <!-- Left section: Home and Log In links -->
-            <div class="left">
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                </ul>
-            </div>
-    
-            <!-- Center section: FAQ, About, Contact Us links -->
-            <div class="center">
-                <ul>
-                    <li><a href="{% url 'faq' %}">FAQ</a></li>
-                    <li><a href="{% url 'aboutUs' %}">About</a></li>
-                    <li><a href="{% url 'contactUs' %}">Contact Us</a></li>
-                </ul>
-            </div>
+        <div class="left">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+            </ul>
+        </div>
 
-            <!-- Right section: Log Out, My Account links, and search input -->
-            <div class="right">
-                {% if user.is_authenticated %}
-                    <ul>
-                        <li><a href="{% url 'logout' %}">Log Out</a></li>
-                        <li><a href="{% url 'myAccount' %}">My Account</a></li>
-                    </ul>
-                {% endif %}
+        <div class="center">
+            <ul>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
+                <li><a href="{% url 'aboutUs' %}">About</a></li>
+                <li><a href="{% url 'contactUs' %}">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="right">
+                <ul>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'myAccount' %}">My Account</a></li>
+                </ul>
+    
+            {% if request.resolver_match.url_name != "login" %}
                 <div class="search-container">
                     <form class="search-form" action="{% url 'search_books' %}" method="get">
                         <input class="search-input" type="text" name="q" placeholder="Search books...">
                     </form>
                 </div>
-            </div>
+            {% endif %}
+        </div>
     </div>
     {% block content %}{% endblock %}
 </body>

@@ -368,21 +368,21 @@ def classics_view(request):
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
 def search_books(request):
     query = request.GET.get('q', '').strip().lower()
-    print(f"Search query: {query}")  # Debugging
-    
-    category_redirects = {
-        'fantasy': 'fantasy',
-        'thriller': 'thriller',
-        'romance': 'romance',
-        'classics': 'classics',
-    }
-    
-    print(f"Checking if '{query}' is in {category_redirects.keys()}")  # Debugging
-    if query in category_redirects:
-        print(f"Redirecting to {category_redirects[query]}")  # Debugging
-        return redirect(category_redirects[query])
-    
-    return redirect('home')
+
+
+    all_books_by_category = load_books_from_csv()
+    all_books = sum(all_books_by_category.values(), []) 
+
+    matching_books = [book for book in all_books if query in book['title'].lower()]
+
+    if len(matching_books) == 1:
+        return redirect('book_detail', book_id=int(matching_books[0]['id'])) 
+    elif len(matching_books) > 1:
+        return render(request, 'ROS_App/search_results.html', {'query': query, 'books': matching_books}) 
+
+    messages.info(request, f"No books found matching '{query}'")
+    return redirect('home') 
+
 
 
 def logout_view(request):

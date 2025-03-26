@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Search Results for "{{ query }}"</h1>
+
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{% url 'book_detail' book_id=book.id %}">
+                        <img src="{% static 'images/'|add:book.cover_image %}"  alt="{{ book.title }}" width="100">
+                        <strong>{{ book.title }}</strong> by {{ book.author }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found matching "{{ query }}".</p>
+    {% endif %}
+{% endblock %}
