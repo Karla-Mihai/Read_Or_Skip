@@ -21,10 +21,10 @@ id,title,author,cover,category
 41,The Girl With The Dragon Tattoo,Stieg Larsson,41Dragon.jpg,Thriller
 42,Angels & Demons,Dan Brown,42A&D.jpg,Thriller
 43,A Good Girl's Guide to Murder,Holly Jackson,43Guide.jpg,Thriller
-4,Twisted Lies,Ali Hazelwood,4TwistedLies.jpg,Romance
-5,Twisted Hate,Ali Hazelwood,5TwistedHate.jpg,Romance
-6,Twisted Games,Ali Hazelwood,6TwistedGames.jpg,Romance
-7,Twisted Love,Ali Hazelwood,7TwistedLove.jpg,Romance
+4,Twisted Lies,Ana Huang,4TwistedLies.jpg,Romance
+5,Twisted Hate,Ana Huang,5TwistedHate.jpg,Romance
+6,Twisted Games,Ana Huang,6TwistedGames.jpg,Romance
+7,Twisted Love,Ana Huang,7TwistedLove.jpg,Romance
 8,Yours Truly,Abby Jimenez,8YoursTruly.jpg,Romance
 9,Red, White & Royal Blue,Casey McQuinston,9RWRB.jpg,Romance
 10,The Hating Game,Sally Thorne,10HatingGame.jpg,Romance
@@ -43,3 +43,8 @@ id,title,author,cover,category
 26,Gone With the Wind,Margaret Mitchell,26Wind.jpg,Classics
 27,The Lorax,Dr. Seuss,27TheLorax.jpg,Classics
 28,War and Peace,Leo Tolstoy,28War.jpg,Classics
+61,Crime and Punishment,Feodor Dostoievski,61CrimePunishment.jpg,Classics
+62,The Metamorphosis,The Metamorphosis,62Kafka.jpg,Classics
+63,A Court Of Thorne and Roses,Sarah J Maas,63ACOTAR.jpg,Romance
+64,Murder on the Orient Express,Agatha Christe,64Orient.jpg,Thriller
+65,Five Survive,Holly Jackson,65FiveSurvive.jpg,Thriller
