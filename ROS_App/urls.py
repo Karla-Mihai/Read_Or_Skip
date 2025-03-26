@@ -27,4 +27,5 @@ urlpatterns = [
     path('categories/romance/', views.romance_view, name='romance'),
     path('categories/classics/', views.classics_view, name='classics'),
     path('book/<int:book_id>/add_to_tbr/', views.book_detail, name='add_to_tbr'),
-]
+    path('contact/', views.contactUs_view,name='contact'),
+    ]

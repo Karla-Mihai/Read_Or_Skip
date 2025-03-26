@@ -8,6 +8,11 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash, l
 from django.contrib.auth.decorators import login_required
 from .models import Category
 from django.http import JsonResponse
+import os
+import csv
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import render
 
 @login_required
 def home_view(request):
@@ -261,29 +266,54 @@ def delete_account(request):
     # If GET request, redirect to confirmation
     return redirect('confirm_delete')
 
+
+def load_books_from_csv():
+    books = {
+        'Fantasy': [],
+        'Thriller': [],
+        'Romance': [],
+        'Classics': [],
+    }
+
+    csv_file_path = os.path.join(settings.MEDIA_ROOT, 'books.csv')
+
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            book_data = {
+                'id': row['id'],
+                'title': row['title'],
+                'author': row['author'],
+                'cover': row['cover'],
+            }
+            category = row['category']
+            if category in books:  # Ensure the category exists in the dictionary
+                books[category].append(book_data)
+    
+    return books
+
+
 def fantasy_view(request):
-    fantasy_books = Book.objects.filter(
-        categories__name="Fantasy"
-    ).order_by('-popularity_score')
+    books = load_books_from_csv() 
+    fantasy_books = books.get('Fantasy', []) 
     return render(request, 'ROS_App/fantasy.html', {'fantasy_books': fantasy_books})
 
 def thriller_view(request):
-    thriller_books = Book.objects.filter(
-        categories__name="Thriller"
-    ).order_by('-popularity_score')
+    books = load_books_from_csv()  
+    thriller_books = books.get('Thriller', [])  
     return render(request, 'ROS_App/thriller.html', {'thriller_books': thriller_books})
 
+
 def romance_view(request):
-    romance_books = Book.objects.filter(
-        categories__name="Romance"
-    ).order_by('-popularity_score')
+    books = load_books_from_csv() 
+    romance_books = books.get('Romance', [])  
     return render(request, 'ROS_App/romance.html', {'romance_books': romance_books})
 
 def classics_view(request):
-    classics_books = Book.objects.filter(
-        categories__name="Classics"
-    ).order_by('-popularity_score')
+    books = load_books_from_csv()
+    classics_books = books.get('Classics', [])  
     return render(request, 'ROS_App/classics.html', {'classics_books': classics_books})
+
 
 def logout_view(request):
     logout(request)

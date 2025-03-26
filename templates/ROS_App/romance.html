@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'CSS/romance.css' %}">
+{% endblock %}
 {% block content %}
     <h1>Romance Books</h1>
     <p>Explore our collection of romance books.</p>
