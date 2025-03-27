@@ -10,17 +10,21 @@
     <p class="welcome-message">Welcome, {{ user.username }}!</p>
     
     <div class="account-actions">
-        <a href="{% url 'update_account' %}" class="account-button">
-            <i class="fas fa-user-edit"></i> Update Account
+        <a href="{% url 'update_account' %}" class="account-button update-btn">
+            <span class="button-icon"></span>
+            <span class="button-text">Update Account</span>
         </a>
-        <a href="{% url 'tbr_list' %}" class="account-button">
-            <i class="fas fa-book"></i> Your TBR List
+        <a href="{% url 'tbr_list' %}" class="account-button tbr-btn">
+            <span class="button-icon"></span>
+            <span class="button-text">Your TBR List</span>
         </a>
-        <a href="{% url 'skipped_book_list' %}" class="account-button">
-            <i class="fas fa-book"></i> Your skipped books
+        <a href="{% url 'skipped_book_list' %}" class="account-button skipped-btn">
+            <span class="button-icon"></span>
+            <span class="button-text">Your skipped books</span>
         </a>
-        <a href="{% url 'confirm_delete' %}" class="account-button">
-            <i class="fas fa-trash-alt"></i> Delete account
+        <a href="{% url 'confirm_delete' %}" class="account-button delete-btn">
+            <span class="button-icon"></span>
+            <span class="button-text">Delete account</span>
         </a>
     </div>
 </div>
