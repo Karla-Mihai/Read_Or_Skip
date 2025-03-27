@@ -214,7 +214,7 @@ def edit_review(request, review_id):
     else:
         form = ReviewForm(instance=review)  # Pre-fill the form with existing review data
 
-    return render(request, 'ROS_App/edit_review.html', {'form': form, 'review': review})
+    return render(request, 'books/edit_review.html', {'form': form, 'review': review})
 
 def book_review(request, review_id):
     book = get_object_or_404(Book, id=review_id)  # Fetch the book being reviewed
