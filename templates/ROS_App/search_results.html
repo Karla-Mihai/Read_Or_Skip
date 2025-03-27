@@ -8,7 +8,7 @@
             {% for book in books %}
                 <li>
                     <a href="{% url 'book_detail' book_id=book.id %}">
-                        <img src="{% static 'images/'|add:book.cover_image %}"  alt="{{ book.title }}" width="100">
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" width="100">
                         <strong>{{ book.title }}</strong> by {{ book.author }}
                     </a>
                 </li>
