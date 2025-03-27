@@ -9,13 +9,17 @@
 
 {% if books %}
 <div class="books-grid">
-        {% for book in books %}
-        <div class="book-card">
-                <h3>{{ book.title }}</h3>
-                <p>Author: {{ book.author }}</p>
-                <p>{{ book.description }}</p>
-                <img src="{% static 'images/' %}{{ book.cover_image.name|cut:'books/covers/' }}" alt="{{ book.title }}">
-        
+    {% for book in books %}
+    <div class="book-card">
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        {% if book.description and book.description.strip != "" and book.description != "No description available" %}
+            <p>{{ book.description }}</p>
+        {% else %}
+            <p>No description available.</p>
+        {% endif %}
+
+        <img src="{% static 'images/' %}{{ book.cover_image.name|cut:'books/covers/' }}" alt="{{ book.title }}">      
                 <!-- Delete from TBR button -->
                 <form method="POST" action="{% url 'delete_from_tbr' book.id %}">
                     {% csrf_token %}
@@ -23,10 +27,11 @@
                         <i class="fas fa-times-circle"></i> Remove from TBR
                     </button>
                 </form>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-</div>
 {% else %}
     <p>You don't have any books in your TBR list.</p>
 {% endif %}
 {% endblock %}
+        

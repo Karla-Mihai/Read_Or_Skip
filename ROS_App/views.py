@@ -48,7 +48,9 @@ def book_detail(request, book_id):
         raise Http404("Book not found")
     
 # default
-    book_description = book.get('description', 'No description available')
+    book_description = book.get('description')
+    if not book_description:
+        book_description = 'no description available'
 
     # Get or create a database Book instance for reviews
     db_book, created = Book.objects.get_or_create(
@@ -60,6 +62,17 @@ def book_detail(request, book_id):
             'cover_image': f"books/covers/{book['cover']}"
         }
     )
+
+    if not created:
+        updated = False
+        if not db_book.description or db_book.description.strip() == "":
+            db_book.description = book_description
+            updated = True
+        if not db_book.cover_image or db_book.cover_image.name == "images/dracula.jpg":
+            db_book.cover_image = f"books/covers/{book['cover']}"
+            updated = True
+        if updated:
+            db_book.save()
 
     if request.method == 'POST':
         form = ReviewForm(request.POST)
