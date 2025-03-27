@@ -17,7 +17,6 @@ from django.http import Http404
 
 
 
-@login_required
 def home_view(request):
     trending_books = [
         {'title': 'Romeo and Juliet', 'author': 'Willian Shakespeare', 'cover': '21Romeo.jpg', 'id': 21},
@@ -38,6 +37,7 @@ def categories_view(request):
     categories = Category.objects.all()  
     return render(request, 'ROS_App/categories.html', {'categories': categories})
 
+@login_required
 def book_detail(request, book_id):
     all_books_by_category = load_books_from_csv()
     all_books = sum(all_books_by_category.values(), [])
