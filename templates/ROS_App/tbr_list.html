@@ -13,8 +13,8 @@
                     <h3>{{ book.title }}</h3>
                     <p>Author: {{ book.author }}</p>
                     <p>{{ book.description }}</p>
-                    <img src="{% static 'images/'|add:book.cover_image %}" alt="{{ book.title }}" class="book-cover">
-                    
+                    <img src="{% static 'images/' %}{{ book.cover_image.name|cut:'books/covers/' }}" alt="{{ book.title }}">
+            
                     <!-- Delete from TBR button -->
                     <form method="POST" action="{% url 'delete_from_tbr' book.id %}">
                         {% csrf_token %}
