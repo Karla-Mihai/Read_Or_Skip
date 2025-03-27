@@ -230,7 +230,7 @@ def book_review(request, review_id):
         form = ReviewForm()
 
     reviews = Review.objects.filter(book=book).order_by('-created_at')
-    return render(request, 'ROS_App/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
+    return render(request, 'books/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
 
 def register_view(request):
     if request.method == 'POST':
