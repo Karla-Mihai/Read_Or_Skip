@@ -32,7 +32,7 @@
                     <li><a href="{% url 'myAccount' %}">My Account</a></li>
                 </ul>
     
-            {% if request.resolver_match.url_name != "login" %}
+            {% if request.resolver_match.url_name != "login" and request.resolver_match.url_name != "contactUs" %}
                 <div class="search-container">
                     <form class="search-form" action="{% url 'search_books' %}" method="get">
                         <input class="search-input" type="text" name="q" placeholder="Search books...">
