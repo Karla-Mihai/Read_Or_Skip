@@ -20,12 +20,11 @@
 }
 
 .account-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 0.75rem 1.5rem;
-    background-color: #816f56;
+    background-color: #827666dc;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -33,15 +32,44 @@
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .account-button:hover {
     background-color: rgb(75, 54, 21);
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.account-button i {
-    font-size: 1rem;
+/* Icon styling */
+.button-icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.button-text {
+    flex-grow: 1;
+}
+
+/* Individual button icons */
+.update-btn .button-icon {
+    background-image: url('/static/images/update-account.png');
+}
+
+.tbr-btn .button-icon {
+    background-image: url('/static/images/TBR-list.png');
+}
+
+.skipped-btn .button-icon {
+    background-image: url('/static/images/skipped-list.png');
+}
+
+.delete-btn .button-icon {
+    background-image: url('/static/images/delete-account.png');
 }
