@@ -17,7 +17,7 @@
                 <img src="{% static 'images/' %}{{ book.cover_image.name|cut:'books/covers/' }}" alt="{{ book.title }}">
         
                 <!-- Delete from skipped button -->
-                <form method="POST" action="{% url 'delete_from_tbr' book.id %}">
+                <form method="POST" action="{% url 'delete_from_skipped' book.id %}">
                     {% csrf_token %}
                     <button type="submit" class="btn-remove-tbr">
                         <i class="fas fa-times-circle"></i> Remove from skipped
