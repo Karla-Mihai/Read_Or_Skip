@@ -214,7 +214,7 @@ def edit_review(request, review_id):
     else:
         form = ReviewForm(instance=review)  # Pre-fill the form with existing review data
 
-    return render(request, 'ROS_App/edit_review.html', {'form': form, 'review': review})
+    return render(request, 'books/edit_review.html', {'form': form, 'review': review})
 
 def book_review(request, review_id):
     book = get_object_or_404(Book, id=review_id)  # Fetch the book being reviewed
@@ -230,7 +230,7 @@ def book_review(request, review_id):
         form = ReviewForm()
 
     reviews = Review.objects.filter(book=book).order_by('-created_at')
-    return render(request, 'ROS_App/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
+    return render(request, 'books/book_review.html', {'form': form, 'reviews': reviews, 'book': book})
 
 def register_view(request):
     if request.method == 'POST':

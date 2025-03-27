@@ -1,35 +1,50 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/book_details.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Edit Your Review for {{ review.book.title }}</h1>
-
-    <form method="POST">
-        {% csrf_token %}
-        
-        <!-- Review Section -->
-        <div class="form-group">
-            <label for="review">Review:</label>
-            {{ form.review }}
+<div class="book-detail-container">
+    <div class="book-header">
+        <div class="book-cover-container">
+            <img src="{% static 'images/' %}{{ review.book.cover_image.name|cut:'books/covers/' }}" alt="{{ review.book.title }}" class="book-cover">
         </div>
-
-        <!-- Summary Section -->
-        <div class="form-group">
-            <label for="summary">Summary:</label>
-            {{ form.summary }}
+        <div class="book-info">
+            <h1 class="book-title">{{ review.book.title }}</h1>
+            <h2 class="book-author">By {{ review.book.author }}</h2>
+            <p class="book-description">{{ review.book.description }}</p>
         </div>
-
-        <!-- Rating Section -->
-        <div class="form-group">
-            <label for="rating">Rating:</label>
-            {{ form.rating }}
+    </div>
+            <div class="review-form">
+                <h3>Edit Your Review Here</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="review">Your Review:</label>
+                        {{ form.review }}
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Summary (optional):</label>
+                        {{ form.summary }}
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        {{ form.rating }}
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button type="submit" class="action-btn btn-submit">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                        <a href="{% url 'book_detail' review.book.id %}" class="action-btn btn-skip">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
-
-    <!-- Cancel Button (Redirect to Book Detail Page) -->
-    <a href="{% url 'book_detail' review.book.id %}" class="btn btn-secondary mt-3">Cancel</a>
+    </div>
 </div>
 {% endblock %}
